@@ -1,9 +1,39 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config'
 
-export default memo(function QRDiscover() {
+import { dicoverMenu } from '@/common/local-data'
+import request from '@/api/request'
+
+import { DiscoverWrapper, TopMenu } from './style'
+
+export default memo(function QRDiscover(props) {
+  
+  useEffect(() => {
+    request({url:'banner'}).then(res=>{
+      
+    })
+    return () => {
+      
+    };
+  }, []);
+
   return (
-    <div>
-      QRDiscover
-    </div>
+    <DiscoverWrapper>
+      <div className="top">
+        <TopMenu className="wrap-v1">
+          {
+            dicoverMenu.map(item=>{
+              return (
+                <div className="item" key={item.title}>
+                  <NavLink to={`/discover${item.link}`} >{item.title}</NavLink>
+                </div>
+              )
+            })
+          }
+        </TopMenu>
+      </div>
+      {renderRoutes(props.route.routes)}
+    </DiscoverWrapper>
   )
 })
