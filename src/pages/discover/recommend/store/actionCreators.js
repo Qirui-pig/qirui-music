@@ -1,6 +1,6 @@
 import * as actionTypes from './constants'
 
-import { getTopBanner, getHotRecommend} from '@/api/recommend'
+import { getTopBanner, getHotRecommend,getNewAlbum} from '@/api/recommend'
 
 export const changeTopBannersAction = (data)=>({
   type:actionTypes.CHANGE_TOP_BANNERS,
@@ -10,6 +10,11 @@ export const changeTopBannersAction = (data)=>({
 export const changeHotRecommendAction = (data)=>({
   type:actionTypes.CHANGE_HOT_RECOMMEND,
   hotRecommend:data.result
+})
+
+export const changeNewAlbumAction = (data)=>({
+  type:actionTypes.CHANGE_NEW_ALBUM,
+  newAlbum:data.weekData.splice(0,10)
 })
 
 export const getTopBannerAction = ()=>{
@@ -26,6 +31,15 @@ export const getHotRecommendAction = (limt)=>{
     getHotRecommend(limt).then(res=>{
       // console.log(res)
       dispatch(changeHotRecommendAction(res.data))
+    })
+  }
+}
+
+export const getNewAlbumAction = (limt)=>{
+  return dispatch=>{
+    getNewAlbum(limt).then(res=>{
+      // console.log(res)
+      dispatch(changeNewAlbumAction(res.data))
     })
   }
 }

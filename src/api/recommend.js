@@ -8,7 +8,16 @@ export function getTopBanner(){
 
 export function getHotRecommend(limit){
   return request({
-    url: "/personalized",
+    url: "personalized",
+    params: {
+      limit
+    }
+  })
+}
+
+export function getNewAlbum(limit){
+  return request({
+    url: "top/album",
     params: {
       limit
     }

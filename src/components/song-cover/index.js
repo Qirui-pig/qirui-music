@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 
 import { SongCoverWrapper } from './style'
-import { imageFormat } from '@/utils/format'
+import { imageFormat, unitFormat } from '@/utils/format'
 
 export default memo(function SongCover(props) {
   const { info } = props
@@ -14,7 +14,7 @@ export default memo(function SongCover(props) {
           <div className="info sprite_covor">
             <span>
               <i className="sprite_icon erji"></i>
-              {info.playCount}
+              {unitFormat(info.playCount)}
             </span>
             <i className="sprite_icon play"></i>
           </div>
