@@ -6,6 +6,7 @@ import bannerImage from '@/assets/img/banner_sprite.png'
 
 export const BannerWrapper = styled.div`
   background: url(${props => props.bgImage});
+  position: relative;
   .banner{
     height:270px;
     display:flex;
@@ -36,8 +37,8 @@ export const BannerControl = styled.div`
   position:absolute;
   left:0;
   right:0;
-  top:50%;
-  transform:translateY(-50%);
+  top:40%;
+  /* transform: translateY(-50%); */
 
   .btn{
     background:url(${bannerImage});
