@@ -1,24 +1,24 @@
-import React, { memo, useEffect } from 'react'
-import { useDispatch,useSelector,shallowEqual } from 'react-redux'
+import React, { memo } from 'react'
 // import {connect} from 'react-redux'
 
-import { getTopBannerAction } from './store/actionCreators'
+import QRBanners from './cpn/top-banner'
+import { RecommendWrapper,Content,RecommendLeft,RecommendRight } from './style'
 
 function QRRecommend(props) {
   // const { getBanners } = props
-  const dispatch = useDispatch()
-  const {topBanners} = useSelector(state => ({
-    topBanners:state.recommend.topBanners
-  }),shallowEqual)
-
-  useEffect(()=>{
-    dispatch(getTopBannerAction())
-  },[dispatch])
 
   return (
-    <div>
-      {topBanners.length}
-    </div>
+    <RecommendWrapper>
+      <QRBanners/>
+      <Content>
+        <RecommendLeft>
+
+        </RecommendLeft>
+        <RecommendRight>
+          
+        </RecommendRight>
+      </Content>
+    </RecommendWrapper>
   )
 }
 // const mapStateToProps = (state)=>({
