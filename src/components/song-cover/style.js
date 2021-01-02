@@ -18,6 +18,7 @@ export const SongCoverWrapper = styled.div`
       width:100%;
       height:100%;
       background-position: 0 0;
+      cursor: pointer;
       .info{
         display:flex;
         justify-content:space-between;
