@@ -24,11 +24,11 @@ const routes = [
     component:QRDiscover,
     routes:[
       {
-        path:'/discover',
         exact:true,
-        render:()=>{
+        path:'/discover',
+        render:()=>(
           <Redirect to="/discover/recommend"/>
-        }
+        )
       },  
       {
         path:'/discover/recommend',

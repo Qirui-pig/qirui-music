@@ -4,6 +4,7 @@ import React, { memo } from 'react'
 import QRBanners from './cpn/top-banner'
 import HotRecommend from './cpn/hot-recommend'
 import NewAlbum from './cpn/new-album'
+import RecommendRanking from './cpn/recommend-ranking'
 import { RecommendWrapper,Content,RecommendLeft,RecommendRight } from './style'
 
 function QRRecommend(props) {
@@ -16,6 +17,7 @@ function QRRecommend(props) {
         <RecommendLeft>
           <HotRecommend/>
           <NewAlbum/>
+          <RecommendRanking/>
         </RecommendLeft>
         <RecommendRight>
           
