@@ -119,3 +119,16 @@ body, textarea, select, input, button {
   color: #fff;
 }
 
+.ant-popover-title {
+  min-width: 177px;
+  min-height: 32px;
+  margin: 0;
+  padding: 5px 16px 4px;
+  color: #fff;
+  margin-bottom: 0;
+  font-weight: 500;
+  background-color: rgb(25,25,25);
+}
+.ant-popover-inner-content{
+  background-color: rgb(25,25,25);
+}

@@ -7,6 +7,8 @@ import QRSong from '@/pages/discover/song'
 import QRDjRadio from '@/pages/discover/djradio'
 import QRArtist from '@/pages/discover/artist'
 import QRAlbum from '@/pages/discover/album'
+import SongDetail from '@/pages/play'
+
 
 import QRFriend from '@/pages/friend'
 import QRMine from '@/pages/mine'
@@ -53,6 +55,10 @@ const routes = [
       {
         path:'/discover/album',
         component:QRAlbum
+      },
+      {
+        path:'/discover/detail',
+        component:SongDetail
       },
     ]
   },

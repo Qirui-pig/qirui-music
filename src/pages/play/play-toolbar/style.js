@@ -30,6 +30,7 @@ export const Control = styled.div`
 
   .prev,.next{
     width:28px;
+    cursor:pointer;
     height:28px;
   }
 
@@ -41,6 +42,7 @@ export const Control = styled.div`
   }
   .play{
     width:36px;
+    cursor:pointer;
     height:36px;
     margin:0 9px;
     background-position:0 ${props=>props.isPlay?'-165px':'-204px'};
@@ -130,7 +132,7 @@ export const Operator = styled.div`
 
     .loop{
       background-position: ${props => {
-        switch(props.sequence) {
+        switch(props.rule) {
           case 1:
             return "-66px -248px"
           case 2:
@@ -143,6 +145,22 @@ export const Operator = styled.div`
     .playlist {
       width: 59px;
       background-position: -42px -68px;
+      position:absolute;
+      color:#a1a1a1;
     }
+    
+  }
+
+
+`
+
+export const PlayListWrapper = styled.div`
+  .item{
+    display:flex;
+    justify-content:space-between;
+    width:300px;
+    background-color:rgba(25,25,25);
+    color:#a1a1a1;
+
   }
 `
