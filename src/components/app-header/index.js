@@ -75,7 +75,7 @@ export default memo(function QRAppFooter() {
         </HeaderRight>
       </div>
       <div className="divider"></div>
-      <Modal title="手机号码登录" visible={isShow} footer={null}>
+      <Modal title="手机号码登录" visible={isShow} footer={null} maskClosable={true} onCancel={e=>{setIsShow(false)}}>
         <Form
           {...layout}
           name="basic"

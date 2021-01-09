@@ -8,6 +8,7 @@ import store from './store'
 
 import QRAppHeader from 'components/app-header'
 import QRAppFooter from 'components/app-footer'
+import PlayToolBar from './pages/play/play-toolbar'
 
 
 export default memo(function App() {
@@ -17,6 +18,7 @@ export default memo(function App() {
         <QRAppHeader />
         {renderRoutes(routes)}
         <QRAppFooter />
+        <PlayToolBar/>
       </HashRouter>
     </Provider>
   )
