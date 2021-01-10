@@ -9,7 +9,9 @@ const defaultState = Map({
   // 循环规则
   rule: 0,
   lyric: [],
-  currentLyricIndex: 0
+  currentLyricIndex: 0,
+  // 评论
+  comments: []
 })
 
 function reducer(state = defaultState, aciton) {
@@ -26,6 +28,8 @@ function reducer(state = defaultState, aciton) {
       return state.set('lyric', aciton.lyric)
     case actionTypes.CHANGE_CURRENT_LYRIC_INDEX:
       return state.set('currentLyricIndex', aciton.currentLyricIndex)
+    case actionTypes.CHANGE_COMMENT:
+      return state.set('comments', aciton.comments)
     default:
       return state
   }

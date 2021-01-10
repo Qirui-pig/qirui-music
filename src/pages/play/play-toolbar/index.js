@@ -120,9 +120,11 @@ export default memo(function PlayToolBar() {
   }
   // 歌曲播放完毕
   const songEnded = () => {
+    // debugger
     // 循环则把进度调为0
-    if (rule === 2) {
+    if (rule === 2 || playList.length === 1) {
       audioRef.current.currentTime = 0
+      audioRef.current.play()
     } else {
       // 否则播放下一首歌曲
       dispatch(changeSongeAction(1))

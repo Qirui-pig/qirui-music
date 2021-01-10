@@ -11,6 +11,10 @@ export const SongDetailWrapper = styled.div`
 
 export const SongDetailLeft = styled.div`
   width: 710px;
+  height: auto;
+  /* display:flex; */
+  /* justify-content:space-between; */
+  /* align-items:center; */
 `
 
 export const SongDetailRight = styled.div`

@@ -1,4 +1,4 @@
-import { getCurrentSong, getLyric } from '@/api/song'
+import { getCurrentSong, getLyric, getComment } from '@/api/song'
 import * as actionTypes from './constants'
 import { parseLyric } from '@/utils/format'
 
@@ -32,11 +32,16 @@ export const changeCurrentLyricIndexAction = (currentLyricIndex) => ({
   currentLyricIndex
 })
 
+export const changeCommentAction = (comments) => ({
+  type: actionTypes.CHANGE_COMMENT,
+  comments
+})
+
 // 切换歌曲
 export const changeSongeAction = (val) => {
   return (dispatch, state) => {
     // debugger
-    // const currentSong = state().getIn(['song','currentSong']),
+    // const currentSong = state().getIn(['song','currentSong'])
     const playList = state().getIn(['song', 'playList'])
     const rule = state().getIn(['song', 'rule'])
     let currentIndex = state().getIn(["song", "currentIndex"]);
@@ -94,6 +99,7 @@ export const getCurrentSongAction = (ids) => {
         dispatch(changePlayListAction(newPlayList))
 
         dispatch(getLyricAction(song.id))
+        dispatch(getCommentAction(song.id))
       })
     } else {
       dispatch(changeCurrentSongAction(playList[songIndex]))
@@ -104,11 +110,23 @@ export const getCurrentSongAction = (ids) => {
 }
 
 export const getLyricAction = (id) => {
-  return (dispatch)=>{
-    getLyric(id).then(res=>{
+  return (dispatch) => {
+    getLyric(id).then(res => {
       let Lyric = parseLyric(res.data.lrc.lyric)
       // console.log(Lyric)
       dispatch(changeLyricAction(Lyric))
+      // 获取评论
+      dispatch(getCommentAction(id))
+    })
+  }
+}
+
+export const getCommentAction = (id) => {
+  return (dispatch, state) => {
+
+    getComment(id, 15).then(res => {
+        console.log(res.data.comments)
+        dispatch(changeCommentAction(res.data.comments))
     })
   }
 }
