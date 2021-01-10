@@ -1,4 +1,4 @@
-import { getCurrentSong, getLyric, getComment } from '@/api/song'
+import { getCurrentSong, getLyric, getComment,getSimilarSongList } from '@/api/song'
 import * as actionTypes from './constants'
 import { parseLyric } from '@/utils/format'
 
@@ -37,6 +37,11 @@ export const changeCommentAction = (comments) => ({
   comments
 })
 
+export const changeSimilarSongListAction = (similarSongList) => ({
+  type: actionTypes.CHANGE_SIMILAR_SONG_LIST,
+  similarSongList
+})
+
 // 切换歌曲
 export const changeSongeAction = (val) => {
   return (dispatch, state) => {
@@ -73,6 +78,10 @@ export const changeSongeAction = (val) => {
 
     //下一首 也需要请求歌词
     dispatch(getLyricAction(currentSong.id))
+    dispatch(getCommentAction(currentSong.id))
+    dispatch(getSimilarSongListAction(currentSong.id))
+
+
   }
 }
 
@@ -100,6 +109,8 @@ export const getCurrentSongAction = (ids) => {
 
         dispatch(getLyricAction(song.id))
         dispatch(getCommentAction(song.id))
+        dispatch(getSimilarSongListAction(song.id))
+        
       })
     } else {
       dispatch(changeCurrentSongAction(playList[songIndex]))
@@ -115,8 +126,6 @@ export const getLyricAction = (id) => {
       let Lyric = parseLyric(res.data.lrc.lyric)
       // console.log(Lyric)
       dispatch(changeLyricAction(Lyric))
-      // 获取评论
-      dispatch(getCommentAction(id))
     })
   }
 }
@@ -125,8 +134,16 @@ export const getCommentAction = (id) => {
   return (dispatch, state) => {
 
     getComment(id, 15).then(res => {
-        console.log(res.data.comments)
+        // console.log(res.data.comments)
         dispatch(changeCommentAction(res.data.comments))
+    })
+  }
+}
+
+export const getSimilarSongListAction = (id)=>{
+  return (dispatch)=>{
+    getSimilarSongList(id).then(res=>{
+      dispatch(changeSimilarSongListAction(res.data.songs))
     })
   }
 }

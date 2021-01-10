@@ -32,3 +32,12 @@ export const getComment = (id,limit='',offset='',before='') => {
     }
   })
 }
+
+export const getSimilarSongList = (id) => {
+  return request({
+    url:'simi/song',
+    params:{
+      id,
+    }
+  })
+}

@@ -11,7 +11,9 @@ const defaultState = Map({
   lyric: [],
   currentLyricIndex: 0,
   // 评论
-  comments: []
+  comments: [],
+  // 相似歌曲
+  similarSongList: []
 })
 
 function reducer(state = defaultState, aciton) {
@@ -30,6 +32,8 @@ function reducer(state = defaultState, aciton) {
       return state.set('currentLyricIndex', aciton.currentLyricIndex)
     case actionTypes.CHANGE_COMMENT:
       return state.set('comments', aciton.comments)
+    case actionTypes.CHANGE_SIMILAR_SONG_LIST:
+      return state.set('similarSongList', aciton.similarSongList)
     default:
       return state
   }
