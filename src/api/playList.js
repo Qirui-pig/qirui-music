@@ -8,3 +8,12 @@ export const getPlayGroup = id=>{
     }
   })
 } 
+
+export const getPlayListComment = (id,limit)=>{
+  return request({
+    url:'comment/playlist',
+    params:{
+      id,limit
+    }
+  })
+}

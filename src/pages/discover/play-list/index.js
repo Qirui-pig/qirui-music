@@ -1,52 +1,57 @@
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
-import { Divider,Table } from 'antd';
+import { Divider, Table, Comment, List } from 'antd';
 
 import { PlayGroupWrapper } from './style'
-import { getPlayGroupAction } from './store/actionCreators'
-import { imageFormat, formatMonthDay,formatMinuteSecond } from '@/utils/format'
+import { getPlayGroupAction, getPlayListCommentAction } from './store/actionCreators'
+import { imageFormat, formatMonthDay, formatMinuteSecond } from '@/utils/format'
 import { getCurrentSongAction } from '../../play/store'
 
 export default memo(function PlayGroup(props) {
 
   const dispatch = useDispatch()
 
-  const { playGroup } = useSelector(state => ({
-    playGroup: state.getIn(['playGroup', 'playGroup'])
+  const { playGroup, playListComment } = useSelector(state => ({
+    playGroup: state.getIn(['playGroup', 'playGroup']),
+    playListComment: state.getIn(['playGroup', 'playListComment'])
   }), shallowEqual)
 
   useEffect(() => {
+    let id = props.location.state.id
     if (props.location.state !== {}) {
-      dispatch(getPlayGroupAction(props.location.state.id))
+      dispatch(getPlayGroupAction(id))
+      dispatch(getPlayListCommentAction(id))
     }
-    dispatch(getPlayGroupAction(5461296669))
+    // dispatch(getPlayGroupAction(5461296669))
   }, [props.location.state, dispatch])
 
   console.log(playGroup)
   const playGroupImg = (playGroup && imageFormat(playGroup.coverImgUrl, 200)) || ''
   const playGroupTitle = (playGroup && playGroup.name) || ''
-  const authImg = (playGroup.creator && imageFormat(playGroup.creator.avatarUrl, 35)) || ''
-  const authName = (playGroup.creator && playGroup.creator.nickname) || ''
+  const authImg = (playGroup && imageFormat(playGroup.creator.avatarUrl, 35)) || ''
+  const authName = (playGroup && playGroup.creator.nickname) || ''
   const tags = (playGroup && playGroup.tags) || []
   const desc = (playGroup && playGroup.description) || ''
   const tracks = (playGroup && playGroup.tracks) || []
   const createTime = (playGroup && formatMonthDay(playGroup.trackUpdateTime)) || ''
 
-  const getSong=(id)=>{
+  const comments = (playListComment && playListComment) || []
+
+  const getSong = (id) => {
     dispatch(getCurrentSongAction(id))
   }
 
   const dataSource = []
-  tracks.map((item,index)=>{
-    const { name,ar,dt,al,id } = item
+  tracks.map((item, index) => {
+    const { name, ar, dt, al, id } = item
     let params = {
-      index:index+1,
+      index: index + 1,
       id,
       name,
-      artist:ar[0].name,
-      time:formatMinuteSecond(dt),
-      album:al.name
+      artist: ar[0].name,
+      time: formatMinuteSecond(dt),
+      album: al.name
     }
     dataSource.push(params)
     return item
@@ -54,50 +59,50 @@ export default memo(function PlayGroup(props) {
 
   const columns = [
     {
-      title:'',
-      key:'index',
+      title: '',
+      key: 'index',
       dataIndex: 'index',
       width: 50,
     },
     {
-      title:'',
-      key:'id',
+      title: '',
+      key: 'id',
       dataIndex: 'id',
       width: 40,
-      render:id=>(
+      render: id => (
         <>
-          <div onClick={e=>getSong(id)} className="sprite_table icon">&nbsp;</div>
+          <div onClick={e => getSong(id)} className="sprite_table icon">&nbsp;</div>
         </>
       )
     },
     {
-      title:'歌曲标题',
-      key:'name',
+      title: '歌曲标题',
+      key: 'name',
       dataIndex: 'name',
-      ellipsis:true,
+      ellipsis: true,
       width: 150,
-      render:name=><a href="/">{name}</a>
+      render: name => <a href="/">{name}</a>
     },
     {
-      title:'时长',
-      key:'time',
+      title: '时长',
+      key: 'time',
       dataIndex: 'time',
     },
     {
-      title:'歌手',
-      key:'artist',
+      title: '歌手',
+      key: 'artist',
       width: 150,
       dataIndex: 'artist',
     },
     {
-      title:'专辑',
-      key:'album',
+      title: '专辑',
+      key: 'album',
       dataIndex: 'album',
-      ellipsis:true,
+      ellipsis: true,
 
     }
   ]
-  
+
 
 
   return (
@@ -133,8 +138,27 @@ export default memo(function PlayGroup(props) {
           <div className="song-table">
             <Table showHeader stripe columns={columns} dataSource={dataSource}></Table>
           </div>
+
+          <div className="comment">
+            <List
+              className="comment-list"
+              header='评论'
+              itemLayout="horizontal"
+              dataSource={comments}
+              renderItem={item => (
+                <li>
+                  <Comment
+                    author={item.user.nickname}
+                    avatar={item.user.avatarUrl}
+                    content={item.content}
+                    datetime={formatMonthDay(item.time)}
+                  />
+                </li>
+              )}
+            />
+          </div>
         </div>
-        <div className="right">111</div>
+        <div className="right"></div>
       </div>
     </PlayGroupWrapper>
   )

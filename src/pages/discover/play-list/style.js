@@ -66,6 +66,7 @@ export const PlayGroupWrapper  = styled.div`
         }
       }
       .song-table{
+        border:1px solid #eee;
         .icon{
           background-position: 0 -103px;
           width: 17px;
