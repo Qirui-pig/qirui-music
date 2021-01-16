@@ -3,5 +3,5 @@ import { getCurrentSongAction } from './actionCreators'
 
 export {
   reducer,
-  getCurrentSongAction
+  getCurrentSongAction,
 }

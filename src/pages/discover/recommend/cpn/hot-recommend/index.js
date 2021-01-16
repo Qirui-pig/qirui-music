@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { useSelector,useDispatch,shallowEqual } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 import { getHotRecommendAction } from '../../store/actionCreators'
 
@@ -28,7 +29,9 @@ export default memo(function HotRecommend() {
         {
           hotRecommend.map(item=>{
             return (
-              <SongCover key={item.picUrl} info={item} />
+              <NavLink to={{pathname:"/discover/playGroup",state:{id:item.id}}} key={item.picUrl}>
+                <SongCover info={item} /> 
+              </NavLink>
             )
           })
         }

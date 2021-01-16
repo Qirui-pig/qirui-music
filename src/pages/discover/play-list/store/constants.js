@@ -1,0 +1,1 @@
+export const CHANGE_PLAY_GROUP = 'CHANGE_PLAY_GROUP'

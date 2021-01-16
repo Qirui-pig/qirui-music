@@ -8,6 +8,7 @@ import QRDjRadio from '@/pages/discover/djradio'
 import QRArtist from '@/pages/discover/artist'
 import QRAlbum from '@/pages/discover/album'
 import SongDetail from '@/pages/play'
+import PlayGroup from '@/pages/discover/play-list'
 
 
 import QRFriend from '@/pages/friend'
@@ -59,6 +60,10 @@ const routes = [
       {
         path:'/discover/detail',
         component:SongDetail
+      },
+      {
+        path:'/discover/playGroup',
+        component:PlayGroup
       },
     ]
   },
