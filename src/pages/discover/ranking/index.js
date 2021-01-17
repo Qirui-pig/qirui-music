@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
-import { Table, Comment, List } from 'antd';
+import { Table } from 'antd';
 
 import { QRRankingWrapper } from './style'
 import { getTopListAction, getTopListDetailAction } from './store/actionCreators'
@@ -74,9 +74,7 @@ export default memo(function QRRanking() {
       dataIndex: 'id',
       width: 40,
       render: id => (
-        <>
-          <div key={id} onClick={e => getSong(id)} className="sprite_table icon">&nbsp;</div>
-        </>
+          <div  onClick={e => getSong(id)} className="sprite_table icon">&nbsp;</div>
       )
     },
     {
@@ -86,7 +84,7 @@ export default memo(function QRRanking() {
       ellipsis: true,
       width: 300,
       render: (name,row) => (
-        row.index < 4 ? <div ><img className="mr15" src={row.imgUrl} alt=""/><a href="/">{name}</a></div> : <a href="/">{name}</a>
+        row.index < 4 ? <div key={row.id}><img className="mr15" src={row.imgUrl} alt=""/><a href="/">{name}</a></div> : <a key={row.id} href="/">{name}</a>
       )
     },
     {
