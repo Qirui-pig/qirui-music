@@ -11,6 +11,7 @@ export const SongTopWrapper = styled.div`
     width:198px;
     height:198px;
     position: relative;
+    margin-right:40px;
       img{
         width:130px;
         height:130px;

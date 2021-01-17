@@ -29,8 +29,8 @@ export default memo(function PlayGroup(props) {
   console.log(playGroup)
   const playGroupImg = (playGroup && imageFormat(playGroup.coverImgUrl, 200)) || ''
   const playGroupTitle = (playGroup && playGroup.name) || ''
-  const authImg = (playGroup && imageFormat(playGroup.creator.avatarUrl, 35)) || ''
-  const authName = (playGroup && playGroup.creator.nickname) || ''
+  const authImg = (playGroup.creator && imageFormat(playGroup.creator.avatarUrl, 35)) || ''
+  const authName = (playGroup.creator && playGroup.creator.nickname) || ''
   const tags = (playGroup && playGroup.tags) || []
   const desc = (playGroup && playGroup.description) || ''
   const tracks = (playGroup && playGroup.tracks) || []
@@ -92,6 +92,7 @@ export default memo(function PlayGroup(props) {
       title: '歌手',
       key: 'artist',
       width: 150,
+      ellipsis: true,
       dataIndex: 'artist',
     },
     {

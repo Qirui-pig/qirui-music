@@ -13,6 +13,7 @@ export const changePlayListCommentAction = (playListComment)=>({
 
 export const getPlayGroupAction = (id)=>{
   return (dispatch)=>{
+    // debugger
     getPlayGroup(id).then(res=>{
       dispatch(changePlayGroupAction(res.data.playlist))
     })
