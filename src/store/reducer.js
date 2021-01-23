@@ -6,6 +6,7 @@ import { reducer as songReducer } from '../pages/play/store'
 import { reducer as playListReducer } from '../pages/discover/play-list/store'
 import { reducer as rankingReducer } from '../pages/discover/ranking/store'
 import { reducer as songListReducer } from '../pages/discover/song/store'
+import { reducer as artistReducer } from '../pages/discover/artist/store'
 
 const cReducer = combineReducers({
   // 推荐
@@ -15,11 +16,13 @@ const cReducer = combineReducers({
   // 歌曲播放
   song: songReducer,
   // 歌单 一部分
-  playGroup:playListReducer,
+  playGroup: playListReducer,
   // 排行榜
-  ranking:rankingReducer,
+  ranking: rankingReducer,
   // 歌单 详细
-  songList:songListReducer
+  songList: songListReducer,
+  // 歌手
+  artist: artistReducer
 })
 
 export default cReducer

@@ -26,12 +26,15 @@ export default memo(function QRSong() {
     dispatch(getCatListAction())
     dispatch(getSongListAction())
   }, [dispatch])
+  
+  const [title, setTitle] = useState('全部');
 
   // 分页
   const changePage = useCallback((page, pageSize) => {
+    setCurrentPage(page)
     // console.log(page,pageSize)
     dispatch(getSongListAction(title, pageSize, (page - 1) * pageSize))
-  }, [dispatch])
+  }, [title,dispatch])
 
   // 接口暂时只支持2种类型
   // const catListCopy = [...catList]
@@ -46,10 +49,11 @@ export default memo(function QRSong() {
 
   // let catListI = [cat0,cat1,cat2,cat3,cat4]
   // console.log(catListI)
-  const [title, setTitle] = useState('全部');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const tagChange = (item) => {
     setTitle(item.name)
+    setCurrentPage(1)
     dispatch(getSongListAction(item.name))
   }
 
@@ -96,7 +100,7 @@ export default memo(function QRSong() {
         }
       </ul>
 
-      <Pagination style={{ 'textAlign': 'center' }} defaultCurrent={1} total={total} defaultPageSize={35} onChange={changePage} />
+      <Pagination style={{ 'textAlign': 'center' }} current={currentPage}  total={total} defaultPageSize={35} onChange={changePage} />
     </QRSongWrapper>
   )
 })

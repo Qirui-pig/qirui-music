@@ -1,0 +1,1 @@
+export const CHANGE_ARTIST_LIST = 'CHANGE_ARTIST_LIST'
