@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
-import { Table } from 'antd';
+import { Table,Statistic } from 'antd';
 
 import { QRRankingWrapper } from './style'
 import { getTopListAction, getTopListDetailAction } from './store/actionCreators'
@@ -145,7 +145,7 @@ export default memo(function QRRanking() {
                 歌曲列表<span>{tracks.length}首歌</span>
               </div>
               <div className="play">
-                播放：<span className="count">{count}</span>次
+                播放：<Statistic className="count" value={count}></Statistic>次
               </div>
             </div>
             <Table showHeader columns={columns} dataSource={dataSource}></Table>

@@ -74,3 +74,17 @@ export function parseLyric(lyricString) {
   }
   return lyrics;
 }
+// 对象除重
+export const deWeightThree = (arr) => {
+  let map = new Map();
+  for (let item of arr) {
+      if (!map.has(item.id)) {
+          map.set(item.id, item);
+      }
+  }
+  return [...map.values()];
+}
+// 随机颜色
+export const getRandomColor = ()=>{
+  return '#'+(Math.random()*0xffffff<<0).toString(16); 
+}

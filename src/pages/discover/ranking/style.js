@@ -123,6 +123,7 @@ export const QRRankingWrapper = styled.div`
             color:#a1a1a1;
             .count{
               color:#c20c0c;
+              display:inline;
               font-weight:600;
             }
           }
