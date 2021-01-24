@@ -1,2 +1,2 @@
-# QR-music
+# qirui-music
 web-music
