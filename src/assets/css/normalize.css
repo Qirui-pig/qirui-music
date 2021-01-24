@@ -54,6 +54,10 @@ body, textarea, select, input, button {
   overflow: hidden;
 }
 
+.qr-logo {
+  background: url(../img/qirui-logo.png) no-repeat 0 9999px;
+}
+
 .wrap-v1 {
   width: 1100px;
   margin: 0 auto;

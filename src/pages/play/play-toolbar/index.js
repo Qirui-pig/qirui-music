@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { Slider, message, Popover } from 'antd'
 
 import { imageFormat, songFormat, formatDate } from '@/utils/format'
-import { PlayToolBarWrapper, Control, PlayInfo, Operator,PlayListWrapper } from './style'
+import { PlayToolBarWrapper, Control, PlayInfo, Operator, PlayListWrapper } from './style'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { changeCurrentLyricIndexAction, changeRuleAction, changeSongeAction, getCurrentSongAction } from '../store/actionCreators'
 
@@ -65,19 +65,21 @@ export default memo(function PlayToolBar() {
       setProgress(currentTime * 1000 / duration * 100)
     }
 
-    // 时间改变 歌词改变
-    let i = lyric.findIndex(item => currentTime * 1000 < item.time)
+    if (lyric) {
+      // 时间改变 歌词改变
+      let i = lyric.findIndex(item => currentTime * 1000 < item.time)
 
-    if (currentLyricIndex !== i - 1) {
-      dispatch(changeCurrentLyricIndexAction(i - 1))
+      if (currentLyricIndex !== i - 1) {
+        dispatch(changeCurrentLyricIndexAction(i - 1))
 
-      let content = lyric[i - 1] && lyric[i - 1].content
-      message.open({
-        key: "lyric",
-        content: content,
-        duration: 0,
-        className: 'lyric-class'
-      })
+        let content = lyric[i - 1] && lyric[i - 1].content
+        message.open({
+          key: "lyric",
+          content: content,
+          duration: 0,
+          className: 'lyric-class'
+        })
+      }
     }
   }
 
@@ -184,7 +186,7 @@ export default memo(function PlayToolBar() {
           <div className="right sprite_player">
             <button className="sprite_player btn volume"></button>
             <button className="sprite_player btn loop" onClick={e => changeRule()}></button>
-            <Popover content={content} title="歌曲列表"  trigger="click">
+            <Popover content={content} title="歌曲列表" trigger="click">
               <button className="sprite_player btn playlist">{playList.length}</button>
             </Popover>
           </div>

@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 import img from '@/assets/img/sprite_01.png'
+import headerImage from '@/assets/img/bg.jpg'
+import logo from '@/assets/img/qirui-logo.png'
 
 export const HeaderWrapper = styled.div`
   height:75px;
   font-size:14px;
-  background-color:#242424;
+  background-image:url(${headerImage});
+  background-position:center;
+  background-size: cover;
+  /* background-color:#242424; */
   .content{
     height:70px;
     /* background-color:skyblue; */
@@ -15,7 +20,7 @@ export const HeaderWrapper = styled.div`
   }
   .divider{
     height:5px;
-    background-color:#c20c20;
+    background-color:rgba(39,92,98,.1)/* c20c20 */;
   }
 `
 
@@ -24,10 +29,12 @@ export const HeaderLeft = styled.div`
   justify-content:space-between;
   .logo{
     display:block;
+    text-indent:-999px;
     width:176px;
     height:69px;
-    text-indent: -9999px;
-    background-position:0 0;
+    background-image:url(${logo});
+    background-size:contain;
+    margin-left:35px;
   }
 
   .select-list{
@@ -38,9 +45,9 @@ export const HeaderLeft = styled.div`
       a{
         display:block;
         padding:0 20px;
-        color:#ccc;
+        color:#fff;
       }
-      :last-of-type a{
+      /* :last-of-type a{
         position: relative;
         ::after {
           position: absolute;
@@ -52,11 +59,12 @@ export const HeaderLeft = styled.div`
           top: 20px;
           right: -15px;
         }
-      }
+      } */
 
       &:hover a, a.active{
-        color:#fff;
-        background-color:#000;
+        color:#FF6A6A;
+        opacity:.7;
+        background-color:	#BBFFFF;
         text-decoration:none;
       }
 
@@ -79,7 +87,7 @@ export const HeaderLeft = styled.div`
 export const HeaderRight = styled.div`
   display: flex;
   align-items: center;
-  color: #ccc;
+  color: #fff;
   font-size: 12px;
 
 
@@ -100,7 +108,7 @@ export const HeaderRight = styled.div`
     height: 32px;
     line-height: 32px;
     text-align: center;
-    border: 1px solid #666;
+    border: 1px solid #fff;
     border-radius: 16px;
     margin: 0 16px;
     background-color: transparent;

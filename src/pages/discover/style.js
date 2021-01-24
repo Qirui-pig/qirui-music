@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const DiscoverWrapper = styled.div`
   .top {
     height: 30px;
-    background-color: #C20C0C;
+    background-color: rgba(39,92,98,.8);
   }
 `
 

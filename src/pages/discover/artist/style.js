@@ -31,4 +31,34 @@ export const QRArtistWrapper = styled.div`
       }
     }
   }
+  .art-content{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    .art-person{
+      padding:25px;
+      .image{
+        img{
+          width:140px;
+          height:140px;
+          border-radius:70px;
+        }  
+      }
+      .name{
+        margin-top:10px;
+        display:block;
+        font-size: 16px;
+        font-weight: 400;
+        text-align:center;
+        cursor:pointer;
+        &:hover{
+          color: #31c27c;
+        }
+      }
+      
+    }
+  }
+
 `
+

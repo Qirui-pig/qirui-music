@@ -51,7 +51,7 @@ export default memo(function QRAppFooter() {
     <HeaderWrapper>
       <div className="content wrap-v1">
         <HeaderLeft>
-          <a href="#/" className="logo sprite_01">111</a>
+          <a href="#/" className="logo">111</a>
           <div className="select-list">
             {
               headerLinks.map((item, index) => {

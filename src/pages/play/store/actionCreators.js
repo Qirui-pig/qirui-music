@@ -123,9 +123,15 @@ export const getCurrentSongAction = (ids) => {
 export const getLyricAction = (id) => {
   return (dispatch) => {
     getLyric(id).then(res => {
-      let Lyric = parseLyric(res.data.lrc.lyric)
-      // console.log(Lyric)
-      dispatch(changeLyricAction(Lyric))
+      let lyric1 = res.data.lrc && res.data.lrc.lyric
+      let Lyric
+      // 没有歌词 没有时候做判断
+      if(lyric1){
+        Lyric = parseLyric(res.data.lrc.lyric) 
+        dispatch(changeLyricAction(Lyric))
+      }else{
+        dispatch(changeLyricAction([]))
+      }
     })
   }
 }

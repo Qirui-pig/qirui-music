@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import downLoadImage from '@/assets/img/download.png'
+import Image from '@/assets/img/fate0.jpg'
 import bannerImage from '@/assets/img/banner_sprite.png'
 
 
@@ -30,7 +30,10 @@ export const BannerRight = styled.a.attrs({
 })`
   width:254px;
   height:270px;
-  background: url(${downLoadImage});
+  background: url(${Image});
+  background-size:cover;
+  background-position:center;
+  opacity:.3;
 `
 
 export const BannerControl = styled.div`

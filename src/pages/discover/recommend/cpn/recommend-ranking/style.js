@@ -12,6 +12,7 @@ export const RankingWrapper = styled.div`
 
 export const TopListWrapper = styled.div`
   width:233px;
+  height:472px;
   .header{
     height:100px;
     display:flex;
