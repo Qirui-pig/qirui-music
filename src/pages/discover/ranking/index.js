@@ -133,14 +133,15 @@ export default memo(function QRRanking(props) {
               )
             })
           }
+
         </div>
         <div className="right">
           <div className="toplist-top">
             <div className="image">
               <LazyLoad height={150}>
-                <Image src={imgUrl} width={150} height={150} preview={false} placeholder={<Spin size="small" />} />
+                <Image src={imgUrl} width={150} height={150} preview={false} placeholder={<Spin style={{padding:'70px'}} size="small" />} />
               </LazyLoad>
-              <i className="sprite_covor"></i>
+              <i  className="image-wrap sprite_covor"></i>
             </div>
             <div className="info">
               <div className="title">{title}</div>

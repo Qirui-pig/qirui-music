@@ -38,7 +38,9 @@ export const HeaderLeft = styled.div`
     text-indent:-999px;
     width:176px;
     height:69px;
-    /* background-image:url(${logo}); */
+    background-image:url(${logo});
+    background-position:-80px 0 ;
+    background-repeat:no-repeat;
     background-size:contain;
     margin-left:35px;
   }

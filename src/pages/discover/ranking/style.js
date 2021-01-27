@@ -58,9 +58,9 @@ export const QRRankingWrapper = styled.div`
       }
     }
     .right{
-      width:740px;
+      /* width:740px; */
       .toplist-top{
-        width:740px;
+        /* width:740px; */
         height:238px;
         padding:40px;
         display:flex;
@@ -72,7 +72,7 @@ export const QRRankingWrapper = styled.div`
             width:150px;
             height:150px;
           } */
-          i{
+          .image-wrap{
             position:absolute;
             width: 150px;
             height: 150px;
