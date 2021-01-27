@@ -1,14 +1,15 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import LazyLoad from 'react-lazyload';
 
-import { Table,Statistic } from 'antd';
+import { Table,Statistic,Image,Spin } from 'antd';
 
 import { QRRankingWrapper } from './style'
 import { getTopListAction, getTopListDetailAction } from './store/actionCreators'
 import { getCurrentSongAction } from '../../play/store'
 import { imageFormat, formatMonthDay,formatMinuteSecond } from '@/utils/format'
 
-export default memo(function QRRanking() {
+export default memo(function QRRanking(props) {
 
   const dispatch = useDispatch()
 
@@ -17,6 +18,7 @@ export default memo(function QRRanking() {
     topListDetail: state.getIn(['ranking', 'topListDetail'])
   }), shallowEqual)
 
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -24,8 +26,14 @@ export default memo(function QRRanking() {
   }, [dispatch])
 
   useEffect(() => {
-    dispatch(getTopListDetailAction(19723756))
-  }, [dispatch])
+    if(props.location.state){
+      window.scrollTo(0,0)
+      dispatch(getTopListDetailAction(props.location.state.id))
+      setCurrentIndex(-1)
+    }else{
+      dispatch(getTopListDetailAction(19723756))
+    }
+  }, [dispatch,props])
 
   const changeList = (item, index) => {
     // console.log()
@@ -113,7 +121,9 @@ export default memo(function QRRanking() {
               return (
                 <div className={["item ", currentIndex === index ? 'active' : ''].join('')} key={item.name} onClick={e => changeList(item, index)}>
                   <div className="item-left">
-                    <img src={imageFormat(item.coverImgUrl, 40)} alt="" />
+                  <LazyLoad height={40}>
+                    <Image src={imageFormat(item.coverImgUrl, 40)} height={40} width={40} preview={false} placeholder={<Spin style={{textAlign: 'center',padding:'10px'}} />} />
+                  </LazyLoad>
                   </div>
                   <div className="item-right">
                     <p className="name">{item.name}</p>
@@ -127,8 +137,10 @@ export default memo(function QRRanking() {
         <div className="right">
           <div className="toplist-top">
             <div className="image">
-              <img src={imgUrl} alt="" />
-              <span className="sprite_covor"></span>
+              <LazyLoad height={150}>
+                <Image src={imgUrl} width={150} height={150} preview={false} placeholder={<Spin size="small" />} />
+              </LazyLoad>
+              <i className="sprite_covor"></i>
             </div>
             <div className="info">
               <div className="title">{title}</div>

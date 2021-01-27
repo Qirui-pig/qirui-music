@@ -25,6 +25,12 @@ export const HeaderWrapper = styled.div`
 `
 
 export const HeaderLeft = styled.div`
+  .music-svg{
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 60px;
+  }
   display:flex;
   justify-content:space-between;
   .logo{
@@ -32,7 +38,7 @@ export const HeaderLeft = styled.div`
     text-indent:-999px;
     width:176px;
     height:69px;
-    background-image:url(${logo});
+    /* background-image:url(${logo}); */
     background-size:contain;
     margin-left:35px;
   }
@@ -63,12 +69,12 @@ export const HeaderLeft = styled.div`
 
       &:hover a, a.active{
         color:#FF6A6A;
-        opacity:.7;
+        opacity:.4;
         background-color:	#BBFFFF;
         text-decoration:none;
       }
 
-      .active .icon{
+      /* .active .icon{
         position: absolute;
         display: inline-block;
         width: 12px;
@@ -77,7 +83,7 @@ export const HeaderLeft = styled.div`
         left: 50%;
         transform: translate(-50%, 0);
         background-position: -226px 0;
-      }
+      } */
 
 
     }

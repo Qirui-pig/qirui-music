@@ -9,6 +9,7 @@ import { Input, Modal, Form, Button,message } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import { changeUseInfoAction } from './store'
 import { login } from '@/api/auth'
+import logo from '@/assets/svg/music.svg'
 
 
 export default memo(function QRAppFooter() {
@@ -51,6 +52,7 @@ export default memo(function QRAppFooter() {
     <HeaderWrapper>
       <div className="content wrap-v1">
         <HeaderLeft>
+          <img src={logo}  className="music-svg" alt='music'/>
           <a href="#/" className="logo">111</a>
           <div className="select-list">
             {

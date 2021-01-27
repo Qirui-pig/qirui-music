@@ -1,5 +1,7 @@
 import React, { memo } from 'react'
 
+import { Image,Spin } from 'antd'
+
 import { SongCoverWrapper } from './style'
 import { imageFormat, unitFormat } from '@/utils/format'
 
@@ -9,7 +11,7 @@ export default memo(function SongCover(props) {
   return (
     <SongCoverWrapper>
       <div className="cover-top">
-        <img src={imageFormat(info.picUrl, 140)} alt={info.name} />
+        <Image src={imageFormat(info.picUrl, 140)} preview={false} width={140} heigh={140} placeholder={<Spin style={{textAlign: 'center',padding:'60px'}} />} />
         <div className="cover sprite_covor">
           <div className="info sprite_covor">
             <span>

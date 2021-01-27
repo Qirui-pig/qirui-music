@@ -1,5 +1,9 @@
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import LazyLoad from 'react-lazyload'
+
+import { Image,Spin } from 'antd'
 
 import ThemeHeader from '@/components/theme-header2'
 import { getTopListAction } from '../../store/actionCreators'
@@ -42,16 +46,17 @@ const TopList = memo(function TopList(props) {
     dispatch(getCurrentSongAction(item.id))
     // console.log(item)
   }
-  // console.log(info,tracks)
   return (
     <TopListWrapper>
       <div className="header">
         <div className="image">
-          <img src={imageFormat(info.coverImgUrl,80)} alt="info.name" />
-          <a href="/" className="image_cover">ranking</a>
+          <LazyLoad height={80} offset={100}>
+            <Image src={imageFormat(info.coverImgUrl,80)} width={80} height={80} preview={false} placeholder={<Spin style={{padding:'30px'}} />} />
+          </LazyLoad>
+          <NavLink to={{pathname:"/discover/ranking",state:{id:info.id}}} className="image_cover">ranking</NavLink>
         </div>
         <div className="info">
-          <a href="/">{info.name}</a>
+          <NavLink to={{pathname:"/discover/ranking",state:{id:info.id}}}>{info.name}</NavLink>
           <div className="btn paly sprite_02"></div>
           <div className="btn favor sprite_02"></div>
         </div>
@@ -76,7 +81,7 @@ const TopList = memo(function TopList(props) {
         }
       </div>
       <div className="footer">
-        <a href="/">查看全部</a>
+        <NavLink to={{pathname:"/discover/ranking",state:{id:info.id}}} >查看全部</NavLink>
       </div>
     </TopListWrapper>
   )

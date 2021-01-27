@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect, useCallback } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
-import { Pagination, Drawer } from 'antd'
+import { Pagination, Drawer,Image,Spin } from 'antd'
 
 import { QRArtistWrapper } from './style'
 import { getArtistAction,getArtistSongAction,getArtistAlbumAction,getArtistDescAction } from './store/actionCreators'
@@ -116,7 +116,7 @@ export default memo(function QRArtist() {
             return (
               <div key={item.id} className="art-person">
                 <div className="image" onClick={e=>showDrawer(item)}>
-                  <img src={imageFormat(item.picUrl, 280)} alt="" />
+                  <Image src={imageFormat(item.picUrl, 280)} width={140} height={140} preview={false} placeholder={<Spin style={{textAlign: 'center',padding:'60px'}} />} />
                 </div>
                 <span className="name" onClick={e=>showDrawer(item)} >{item.name}</span>
               </div>

@@ -68,11 +68,11 @@ export const QRRankingWrapper = styled.div`
           position:relative;
           padding:5px;
           border:1px solid #eee;
-          img{
+          /* img{
             width:150px;
             height:150px;
-          }
-          span{
+          } */
+          i{
             position:absolute;
             width: 150px;
             height: 150px;

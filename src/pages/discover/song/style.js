@@ -15,6 +15,7 @@ export const QRSongWrapper = styled.div`
     }
     .tag-item{
       margin:7px;
+      cursor:pointer;
     }
   }
   .header{

@@ -1,8 +1,9 @@
 import React, { memo, useEffect, useCallback, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import LazyLoad from 'react-lazyload';
 
-import { Button, Pagination, Card, Tag } from 'antd'
+import { Button, Pagination, Card, Tag, Spin,Image } from 'antd'
 
 import { QRSongWrapper } from './style'
 import { getCatListAction, getSongListAction } from './store/actionCreators'
@@ -64,7 +65,7 @@ export default memo(function QRSong() {
           {
             catList.map(item => {
               return (
-                <Tag onClick={e => tagChange(item)} key={item.name} className="tag-item" color={getRandomColor()}>{item.name}</Tag>
+                <Tag  onClick={e => tagChange(item)} key={item.name} className="tag-item" color={getRandomColor()}>{item.name}</Tag>
               )
             })
           }
@@ -83,7 +84,9 @@ export default memo(function QRSong() {
             return (
               <li key={item.coverImgUrl} className="item">
                 <div className="image">
-                  <img src={imageFormat(item.coverImgUrl, 140)} alt="" />
+                  <LazyLoad height={140} offset={100}>
+                    <Image src={imageFormat(item.coverImgUrl, 140)} width={140} height={140} preview={false} placeholder={<Spin style={{textAlign: 'center',padding:'60px'}} />} />
+                  </LazyLoad>
                   <NavLink to={{ pathname: "/discover/playGroup", state: { id: item.id } }} className="sprite_covor">123</NavLink>
                   <div className="bottom sprite_covor">
                     <i className="icon-header icon_all"></i>

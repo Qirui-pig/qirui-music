@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Tabs, Descriptions } from 'antd';
+import { Tabs, Descriptions,Image } from 'antd';
 
 import { DrawerContentWrapper, AlbumWrapper, SongerDetailWrapper } from './style'
 import SongTable from '@/components/song-table'
@@ -31,7 +31,7 @@ export default memo(function QRDrawerContent(props) {
                 return (
                   <div key={item.id} className="album-item">
                     <div className="image">
-                      <img src={imageFormat(item.picUrl, 100)} alt="" />
+                      <Image src={imageFormat(item.picUrl, 100)} width={118} height={100} placeholder='加载中...' />
                       <i className="image_cover"></i>
                     </div>
                     <div className="info">
