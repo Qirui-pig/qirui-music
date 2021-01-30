@@ -77,3 +77,12 @@ export const getProgramDetail = (id)=>{
     }
   })
 }
+
+export const getSongUrl = (id)=>{
+  return request({
+    url:'song/url',
+    params:{
+      id
+    }
+  })
+}

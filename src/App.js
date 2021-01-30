@@ -10,7 +10,6 @@ import QRAppHeader from 'components/app-header'
 import QRAppFooter from 'components/app-footer'
 import PlayToolBar from './pages/play/play-toolbar'
 
-
 export default memo(function App() {
   return (
     <Provider store={store}>

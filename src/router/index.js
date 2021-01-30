@@ -9,7 +9,7 @@ import QRArtist from '@/pages/discover/artist'
 import QRAlbum from '@/pages/discover/album'
 import SongDetail from '@/pages/play'
 import PlayGroup from '@/pages/discover/play-list'
-
+import DjDetail from '@/pages/discover/djradio/dj-detail'
 
 import QRFriend from '@/pages/friend'
 import QRMine from '@/pages/mine'
@@ -65,6 +65,10 @@ const routes = [
         path:'/discover/playGroup',
         component:PlayGroup
       },
+      {
+        path:'/discover/djDetail',
+        component:DjDetail
+      }
     ]
   },
   {
@@ -74,7 +78,7 @@ const routes = [
   {
     path:'/mine',
     component:QRMine
-  }
+  },
 ]
 
 export default routes

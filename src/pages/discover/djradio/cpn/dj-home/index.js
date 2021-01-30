@@ -1,18 +1,28 @@
 import React, { memo, useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import { Carousel, Row, Col, Tag } from 'antd'
+// import ReactAplayer from 'react-aplayer';
 
 import { DjHomeWrapper, ImageItem } from './style'
-import { getDjBanner, getRecommendProgram, getProgramRanking, getDjCatRecommend } from '@/api/djradio'
+import { getDjBanner, getRecommendProgram, getProgramRanking, getDjCatRecommend, getSongUrl } from '@/api/djradio'
 import LoadImage from '@/components/loading-image'
+// import {imageFormat} from '@/utils/format'
 
 export default memo(function DjHome() {
   const [banners, setBanners] = useState([]);
   const [recommend, setRecommend] = useState([]);
   const [ranking, setRanking] = useState([])
   const [typeList, setTypeList] = useState([])
+  // const [audio, setAudio] = useState({
+  //   theme: '#87CEEB',
+  //   lrcType: 3,
+  //   audio: [
+  //   ]
+  // });
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     getDjBanner().then(res => {
       setBanners([...res.data.data])
     })
@@ -27,6 +37,42 @@ export default memo(function DjHome() {
       setTypeList([...res.data.data])
     })
   }, []);
+
+
+  // const onPlay = () => {
+  //   console.log('on play');
+  // };
+
+  // const onPause = () => {
+  //   console.log('on pause');
+  // };
+
+  // // example of access aplayer instance
+  // const onInit = ap => {
+  //   console.log(ap)
+  // };
+
+  const changeSong = (item) => {
+    getSongUrl(item.mainTrackId).then(res => {
+      if (res.data.data[0].url !== '') {
+        window.open(res.data.data[0].url)
+        // let song = {
+        //   name:item.name,
+        //   artist:item.dj.brand,
+        //   url:res.data.data[0].url,
+        //   cover:imageFormat(item.coverUrl,100),
+        //   theme:'#87CEEB'
+        // }
+        // let audioC = {...audio}
+        
+        // audioC.audio.push(song)
+        // setAudio(audioC)
+        // console.log(audio)
+
+      }
+    })
+  }
+  
 
   return (
     <DjHomeWrapper>
@@ -43,6 +89,14 @@ export default memo(function DjHome() {
         }
       </Carousel>
       {/* program */}
+      {/* <div>
+        <ReactAplayer
+          {...audio}
+          onInit={onInit}
+          onPlay={onPlay}
+          onPause={onPause}
+        />
+      </div> */}
       <div className="center">
         <div className="programs">
           <div className="p-header">推荐节目</div>
@@ -54,7 +108,7 @@ export default memo(function DjHome() {
                     <Row>
                       <Col className="image" span={4}>
                         <LoadImage src={item.coverUrl} width={40} alt="" />
-                        <i className="play"></i>
+                        <i className="play" onClick={e => changeSong(item)}></i>
                       </Col>
                       <Col span={16}>
                         <p className="name text-nowrap">{item.name}</p>
@@ -75,19 +129,20 @@ export default memo(function DjHome() {
           <ul className="list">
             {
               ranking.map((item, index) => {
+                let iten = item.program
                 return (
-                  <li key={item.program.coverUrl} className={['list-item ', index % 2 !== 1 ? 'bg' : ''].join('')}>
+                  <li key={iten.coverUrl} className={['list-item ', index % 2 !== 1 ? 'bg' : ''].join('')}>
                     <Row>
                       <Col className="image" span={4}>
-                        <LoadImage src={item.program.coverUrl} width={40} alt="" />
-                        <i className="play"></i>
+                        <LoadImage src={iten.coverUrl} width={40} alt="" />
+                        <i className="play" onClick={e => changeSong(iten)}></i>
                       </Col>
                       <Col span={16}>
-                        <p className="name text-nowrap">{item.program.name}</p>
-                        <p className="creator text-nowrap">{item.program.dj && item.program.dj.nickname}</p>
+                        <p className="name text-nowrap">{iten.name}</p>
+                        <p className="creator text-nowrap">{iten.dj && iten.dj.nickname}</p>
                       </Col>
                       <Col span={4}>
-                        <Tag className="p-tag">{item.program.radio && item.program.radio.category}</Tag>
+                        <Tag className="p-tag">{iten.radio && iten.radio.category}</Tag>
                       </Col>
                     </Row>
                   </li>
@@ -108,15 +163,17 @@ export default memo(function DjHome() {
                   item.radios && item.radios.map(iten => {
                     return (
                       <li className="dj-item">
-                        <Row>
-                          <Col span={10}>
-                            <LoadImage src={iten.picUrl} width={120} />
-                          </Col>
-                          <Col className="info" span={14}>
-                            <p className="name text-nowrap">{iten.name}</p>
-                            <p className="desc">{iten.rcmdText}</p>
-                          </Col>
-                        </Row>
+                        <NavLink to={{ pathname: '/discover/djDetail', state: { id: iten.id } }}>
+                          <Row>
+                            <Col span={10}>
+                              <LoadImage src={iten.picUrl} width={120} />
+                            </Col>
+                            <Col className="info" span={14}>
+                              <p className="name text-nowrap">{iten.name}</p>
+                              <p className="desc">{iten.rcmdText}</p>
+                            </Col>
+                          </Row>
+                        </NavLink>
                       </li>
                     )
                   })
@@ -126,6 +183,7 @@ export default memo(function DjHome() {
           )
         })
       }
+
     </DjHomeWrapper>
   )
 })
