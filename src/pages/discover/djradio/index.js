@@ -4,6 +4,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { getDjCatAction,changeCurrentTypeAction } from './store/actionCreators'
 import { DjRadioWrapper } from './style'
 import DjHome  from './cpn/dj-home'
+import DjType from './cpn/dj-type'
 
 export default memo(function QRDjRadio () {
 
@@ -45,7 +46,7 @@ export default memo(function QRDjRadio () {
       </ul>
       {/* 判断current-type是否存在 如果不存在 就是默认radio推荐页 在则是另外一个组件 */}
       {
-        currentType==='' ? <DjHome/>:(<div>222</div>)
+        currentType==='' ? <DjHome/>:(<DjType type={currentType}/>)
       }
     </DjRadioWrapper>
   )

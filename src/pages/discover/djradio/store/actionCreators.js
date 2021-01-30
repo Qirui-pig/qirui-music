@@ -35,11 +35,11 @@ export const getDjDetailByTypeAction = (type)=>{
     dispatch(changeCurrentTypeAction(type))
 
     getDjByType(type).then(res=>{
-      console.log(res)
+      dispatch(changeCurrentRecommentAction(res.data.djRadios))
     })
 
     getDjHotByType(type).then(res=>{
-      console.log(res)
+      dispatch(changeCurrentHotDjAction(res.data.djRadios))
     })
   }
 }

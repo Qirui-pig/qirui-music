@@ -28,8 +28,6 @@ export default memo(function DjHome() {
     })
   }, []);
 
-  console.log(typeList)
-
   return (
     <DjHomeWrapper>
       {/* banners */}
@@ -101,18 +99,18 @@ export default memo(function DjHome() {
       </div>
       {/* different type */}
       {
-        typeList.map(item=>{
-          return(
-            <div key={item.categoryId} className="dj">
+        typeList.map(item => {
+          return (
+            <div key={item.categoryName} className="dj">
               <div className="dj-header">{item.categoryName}</div>
               <ul className="dj-list">
                 {
-                  item.radios&&item.radios.map(iten=>{
-                    return(
+                  item.radios && item.radios.map(iten => {
+                    return (
                       <li className="dj-item">
                         <Row>
                           <Col span={10}>
-                            <LoadImage src={iten.picUrl} width={120}/>
+                            <LoadImage src={iten.picUrl} width={120} />
                           </Col>
                           <Col className="info" span={14}>
                             <p className="name text-nowrap">{iten.name}</p>
