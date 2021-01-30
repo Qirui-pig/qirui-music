@@ -2,8 +2,8 @@ import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { getDjCatAction,changeCurrentTypeAction } from './store/actionCreators'
-
 import { DjRadioWrapper } from './style'
+import DjHome  from './cpn/dj-home'
 
 export default memo(function QRDjRadio () {
 
@@ -45,7 +45,7 @@ export default memo(function QRDjRadio () {
       </ul>
       {/* 判断current-type是否存在 如果不存在 就是默认radio推荐页 在则是另外一个组件 */}
       {
-        currentType==='' ? (<div>1111</div>):(<div>222</div>)
+        currentType==='' ? <DjHome/>:(<div>222</div>)
       }
     </DjRadioWrapper>
   )

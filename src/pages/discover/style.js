@@ -24,7 +24,7 @@ export const TopMenu = styled.div`
 
       &:hover, &.active {
         text-decoration: none;
-        background-color: #9B0909;
+        background-color: skyblue;
         border-radius: 20px;
       }
     }
