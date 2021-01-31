@@ -8,6 +8,7 @@ import { reducer as rankingReducer } from '../pages/discover/ranking/store'
 import { reducer as songListReducer } from '../pages/discover/song/store'
 import { reducer as artistReducer } from '../pages/discover/artist/store'
 import { reducer as djRadioReducer } from '../pages/discover/djradio/store'
+import { reducer as albumReducer } from '../pages/discover/album/store'
 
 const cReducer = combineReducers({
   // 推荐
@@ -25,7 +26,9 @@ const cReducer = combineReducers({
   // 歌手
   artist: artistReducer,
   // 电台
-  djRadio:djRadioReducer,
+  djRadio: djRadioReducer,
+  // 新碟
+  album: albumReducer
 })
 
 export default cReducer

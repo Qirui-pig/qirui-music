@@ -9,7 +9,9 @@ export const getNewAlbum = (area,type)=>{
     params:{
       limit:10,
       area,
-      type
+      type,
+      year:'2021',
+      month:'1'
     }
   })
 }
