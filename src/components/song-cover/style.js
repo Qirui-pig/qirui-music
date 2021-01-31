@@ -5,6 +5,8 @@ export const SongCoverWrapper = styled.div`
   margin:20px 10px;
 
   .cover-top{
+    width:140px;
+    height:140px;
     position: relative;
     &>img{
       width:140px;

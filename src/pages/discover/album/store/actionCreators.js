@@ -35,7 +35,7 @@ export const getAllAlbumAction = (offset,area)=>{
 export const getAlbumDetailAction = (id)=>{
   return dispatch=>{
     getAlbumDetail(id).then(res=>{
-      console.log(res.data)
+      dispatch(changeAlbumDetailAction(res.data))
     })
   }
 }

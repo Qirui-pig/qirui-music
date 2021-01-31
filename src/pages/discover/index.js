@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,withRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 
 import { dicoverMenu } from '@/common/local-data'
@@ -7,7 +7,7 @@ import request from '@/api/request'
 
 import { DiscoverWrapper, TopMenu } from './style'
 
-export default memo(function QRDiscover(props) {
+function QRDiscover(props) {
   
   useEffect(() => {
     request({url:'banner'}).then(res=>{
@@ -36,4 +36,6 @@ export default memo(function QRDiscover(props) {
       {renderRoutes(props.route.routes)}
     </DiscoverWrapper>
   )
-})
+}
+
+export default memo(withRouter(QRDiscover))

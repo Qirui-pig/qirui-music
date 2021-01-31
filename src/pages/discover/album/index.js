@@ -1,10 +1,11 @@
-import React, { memo, useEffect, useState,useCallback } from 'react'
+import React, { memo, useEffect, useState, useCallback } from 'react'
 import { useDispatch, shallowEqual, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 import { Pagination } from 'antd'
 
 import { AlbumWrapper } from './style'
-import { getHotAlbumAction,getAllAlbumAction } from './store/actionCreators'
+import { getHotAlbumAction, getAllAlbumAction } from './store/actionCreators'
 import LoadImage from '@/components/loading-image'
 
 export default memo(function QRAlubm() {
@@ -25,18 +26,18 @@ export default memo(function QRAlubm() {
     dispatch(getAllAlbumAction(0))
   }, [dispatch]);
 
-  const typeChange = (item,index)=>{
+  const typeChange = (item, index) => {
     setCurrentPage(1)
     setCurrentIndex(index)
     setCurrentType(item.type)
-    dispatch(getAllAlbumAction(0,item.type))
+    dispatch(getAllAlbumAction(0, item.type))
   }
 
-  const changePage = useCallback((page,pageSize)=>{
-    window.scroll(0,0)
+  const changePage = useCallback((page, pageSize) => {
+    window.scroll(0, 0)
     setCurrentPage(page)
-    dispatch(getAllAlbumAction(page*pageSize,currentType))
-  },[dispatch,currentType])
+    dispatch(getAllAlbumAction(page * pageSize, currentType))
+  }, [dispatch, currentType])
 
   return (
     <AlbumWrapper className="wrap-v2">
@@ -48,15 +49,17 @@ export default memo(function QRAlubm() {
           {
             hotAlbum.map(item => {
               return (
-                <li className="list-item" key={item.id}>
-                  <div className="image">
-                    <LoadImage width={140} src={item.picUrl} />
-                    <div className="play icon_all"></div>
-                    <div className="cover sprite_covor"></div>
-                  </div>
-                  <div className="name">{item.name}</div>
-                  <div className="artist text-nowrap">{item.artist && item.artist.name}</div>
-                </li>
+                <NavLink to={{ pathname: '/discover/albumDetail', state:{ id: item.id } }}>
+                  <li className="list-item" key={item.id}>
+                    <div className="image">
+                      <LoadImage width={140} src={item.picUrl} />
+                      <div className="play icon_all"></div>
+                      <div className="cover sprite_covor"></div>
+                    </div>
+                    <div className="name">{item.name}</div>
+                    <div className="artist text-nowrap">{item.artist && item.artist.name}</div>
+                  </li>
+                </NavLink>
               )
             })
           }
@@ -67,8 +70,8 @@ export default memo(function QRAlubm() {
           <span className='title'>全部新碟</span>
           <ul className="type">
             {
-              type.map((item,index) => {
-                return <li  onClick={e=>typeChange(item,index)} className={['type-item ',currentIndex===index?'active':''].join('')} key={item.name}>{item.name}</li>
+              type.map((item, index) => {
+                return <li onClick={e => typeChange(item, index)} className={['type-item ', currentIndex === index ? 'active' : ''].join('')} key={item.name}>{item.name}</li>
               })
             }
           </ul>
@@ -77,21 +80,23 @@ export default memo(function QRAlubm() {
           {
             allAlbum.map(item => {
               return (
-                <li className="list-item" key={item.id}>
-                  <div className="image">
-                    <LoadImage width={140} src={item.picUrl} />
-                    <div className="play icon_all"></div>
-                    <div className="cover sprite_covor"></div>
-                  </div>
-                  <div className="name text-nowrap">{item.name}</div>
-                  <div className="artist text-nowrap">{item.artist && item.artist.name}</div>
-                </li>
+                <NavLink to={{ pathname: '/discover/albumDetail', state:{ id: item.id } }}>
+                  <li className="list-item" key={item.id}>
+                    <div className="image">
+                      <LoadImage width={140} src={item.picUrl} />
+                      <div className="play icon_all"></div>
+                      <div className="cover sprite_covor"></div>
+                    </div>
+                    <div className="name text-nowrap">{item.name}</div>
+                    <div className="artist text-nowrap">{item.artist && item.artist.name}</div>
+                  </li>
+                </NavLink>
               )
             })
           }
         </ul>
-        <Pagination  style={{ 'textAlign': 'center','marginBottom':'10px' }} showSizeChanger={false} current={currentPage} total={500} onChange={changePage} defaultPageSize={35}/>
-        
+        <Pagination style={{ 'textAlign': 'center', 'marginBottom': '10px' }} showSizeChanger={false} current={currentPage} total={500} onChange={changePage} defaultPageSize={35} />
+
       </div>
     </AlbumWrapper>
   )

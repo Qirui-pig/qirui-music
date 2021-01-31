@@ -22,20 +22,6 @@ export default memo(function DjHome() {
     ]
   }
 
-  const onPlay = () => {
-    console.log('on play');
-  };
-
-  const onPause = () => {
-    console.log('on pause');
-  };
-
-  // example of access aplayer instance
-  const onInit = ap => {
-    console.log(ap)
-    setaAp(ap)
-  };
-
   useEffect(() => {
     window.scrollTo(0, 0)
     getDjBanner().then(res => {
@@ -51,10 +37,22 @@ export default memo(function DjHome() {
     getDjCatRecommend().then(res => {
       setTypeList([...res.data.data])
     })
-    return ()=>{
+  }, []);
 
-    }
-  }, [ap]);
+
+  const onPlay = () => {
+    console.log('on play');
+  };
+
+  const onPause = () => {
+    console.log('on pause');
+  };
+
+  // example of access aplayer instance
+  const onInit = ap => {
+    console.log(ap)
+    setaAp(ap)
+  };
 
   const changeSong = (item) => {
     getSongUrl(item.mainTrackId).then(res => {
