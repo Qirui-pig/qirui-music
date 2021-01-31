@@ -2,24 +2,39 @@ import React, { memo, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Carousel, Row, Col, Tag } from 'antd'
-// import ReactAplayer from 'react-aplayer';
+import ReactAplayer from 'react-aplayer';
 
 import { DjHomeWrapper, ImageItem } from './style'
 import { getDjBanner, getRecommendProgram, getProgramRanking, getDjCatRecommend, getSongUrl } from '@/api/djradio'
 import LoadImage from '@/components/loading-image'
-// import {imageFormat} from '@/utils/format'
+import {imageFormat} from '@/utils/format'
 
 export default memo(function DjHome() {
   const [banners, setBanners] = useState([]);
   const [recommend, setRecommend] = useState([]);
   const [ranking, setRanking] = useState([])
   const [typeList, setTypeList] = useState([])
-  // const [audio, setAudio] = useState({
-  //   theme: '#87CEEB',
-  //   lrcType: 3,
-  //   audio: [
-  //   ]
-  // });
+  const [ap, setaAp] = useState({});
+  const audio={
+    theme: '#87CEEB',
+    lrcType: 3,
+    audio: [
+    ]
+  }
+
+  const onPlay = () => {
+    console.log('on play');
+  };
+
+  const onPause = () => {
+    console.log('on pause');
+  };
+
+  // example of access aplayer instance
+  const onInit = ap => {
+    console.log(ap)
+    setaAp(ap)
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -36,33 +51,23 @@ export default memo(function DjHome() {
     getDjCatRecommend().then(res => {
       setTypeList([...res.data.data])
     })
-  }, []);
+    return ()=>{
 
-
-  // const onPlay = () => {
-  //   console.log('on play');
-  // };
-
-  // const onPause = () => {
-  //   console.log('on pause');
-  // };
-
-  // // example of access aplayer instance
-  // const onInit = ap => {
-  //   console.log(ap)
-  // };
+    }
+  }, [ap]);
 
   const changeSong = (item) => {
     getSongUrl(item.mainTrackId).then(res => {
       if (res.data.data[0].url !== '') {
-        window.open(res.data.data[0].url)
-        // let song = {
-        //   name:item.name,
-        //   artist:item.dj.brand,
-        //   url:res.data.data[0].url,
-        //   cover:imageFormat(item.coverUrl,100),
-        //   theme:'#87CEEB'
-        // }
+        // window.open(res.data.data[0].url)
+        let song = {
+          name:item.name,
+          artist:item.dj.brand,
+          url:res.data.data[0].url,
+          cover:imageFormat(item.coverUrl,100),
+          theme:'#87CEEB'
+        }
+        ap.list.add([song])
         // let audioC = {...audio}
         
         // audioC.audio.push(song)
@@ -89,14 +94,14 @@ export default memo(function DjHome() {
         }
       </Carousel>
       {/* program */}
-      {/* <div>
+      <div>
         <ReactAplayer
           {...audio}
           onInit={onInit}
           onPlay={onPlay}
           onPause={onPause}
         />
-      </div> */}
+      </div>
       <div className="center">
         <div className="programs">
           <div className="p-header">推荐节目</div>
