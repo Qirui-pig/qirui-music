@@ -1,19 +1,55 @@
-import React, { memo, useState,  } from 'react'
+import React, { memo, useState, 
+// useEffect
+ } from 'react'
 import { useDispatch } from 'react-redux'
-
-import { headerLinks } from '@/common/local-data'
-
 import { NavLink } from 'react-router-dom'
-import { HeaderWrapper, HeaderLeft, HeaderRight } from './style'
+
 import { Input, Modal, Form, Button,message } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
+
+
+import { headerLinks } from '@/common/local-data'
+import { HeaderWrapper, HeaderLeft, HeaderRight } from './style'
 import { changeUseInfoAction } from './store'
-import { login } from '@/api/auth'
+import { login,
+// loginByQr,
+// getQr,checkQr 
+} from '@/api/auth'
 import logo from '@/assets/svg/music.svg'
 
 
 export default memo(function QRAppFooter() {
   const [isShow, setIsShow] = useState(false);
+  // const [baseQr, setBaseQr] = useState(null)
+  // const [key, setKey] = useState(null)
+
+  // const getImg = ()=>{
+  //   loginByQr().then(res=>{
+  //     setKey(res.data.data.unikey)
+  //     getQr(key).then(res2=>{
+  //       setBaseQr(res2.data.data.qrimg)
+  //     })
+  //   })
+  // }
+
+  // useEffect(() => {
+  //   getImg()
+  //   let flag = false
+
+  //   if(!flag && key!==null){
+  //     setInterval(() => {
+  //       checkQr(key).then(res=>{
+  //         if(res.data.code === 800){
+  //           getImg()
+  //         }else if(res.data.code === 803){
+  //           message.success('登录成功')
+  //           flag = true
+  //           setIsShow(false)
+  //         }
+  //       })
+  //     }, 2000);
+  //   }
+  // }, [])
 
   const layout = {
     labelCol: { span: 6 },
@@ -50,7 +86,7 @@ export default memo(function QRAppFooter() {
 
   return (
     <HeaderWrapper>
-      <div className="content wrap-v1">
+      <div className="content wrap-v2">
         <HeaderLeft>
           <img src={logo}  className="music-svg" alt='music'/>
           <a href="#/" className="logo">111</a>
@@ -68,16 +104,16 @@ export default memo(function QRAppFooter() {
         </HeaderLeft>
         <HeaderRight>
           <Input className="search" prefix={<SearchOutlined />} placeholder="音乐/视频/电台/用户" />
-          <div className="center">
-            创作者中心
-          </div>
-          <div onClick={e => setIsShow(true)}>
+          <div className="center" onClick={e => setIsShow(true)}>
             登录
           </div>
         </HeaderRight>
       </div>
       <div className="divider"></div>
       <Modal title="手机号码登录" visible={isShow} footer={null} maskClosable={true} onCancel={e=>{setIsShow(false)}}>
+        {/* <img src={baseQr} />
+        使用 网易云音乐APP 扫码登录
+        <br/> */}
         <Form
           {...layout}
           name="basic"

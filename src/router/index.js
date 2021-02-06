@@ -1,5 +1,19 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 
+// const QRDiscover =  React.lazy(_=>import('@/pages/discover')) 
+// const QRRecommend =  React.lazy(_=>import('@/pages/discover/recommend')) 
+// const QRRanking =  React.lazy(_=>import('@/pages/discover/ranking')) 
+// const QRSong =  React.lazy(_=>import('@/pages/discover/song')) 
+// const QRDjRadio =  React.lazy(_=>import('@/pages/discover/djradio')) 
+// const QRArtist =  React.lazy(_=>import('@/pages/discover/artist')) 
+// const QRAlbum =  React.lazy(_=>import('@/pages/discover/album')) 
+// const SongDetail =  React.lazy(_=>import('@/pages/play')) 
+// const PlayGroup =  React.lazy(_=>import('@/pages/discover/play-list')) 
+// const DjDetail =  React.lazy(_=>import('@/pages/discover/djradio/dj-detail')) 
+// const AlbumDetail =  React.lazy(_=>import('@/pages/discover/album/album-detail')) 
+// const QRFriend =  React.lazy(_=>import('@/pages/friend')) 
+// const QRMine =  React.lazy(_=>import('@/pages/mine')) 
 import QRDiscover from '@/pages/discover'
 import QRRecommend from '@/pages/discover/recommend'
 import QRRanking from '@/pages/discover/ranking'
@@ -14,7 +28,7 @@ import AlbumDetail from '@/pages/discover/album/album-detail'
 
 import QRFriend from '@/pages/friend'
 import QRMine from '@/pages/mine'
-import { Redirect } from 'react-router-dom'
+import MvDetail from '@/pages/mine/mv-detail'
 
 
 const routes = [
@@ -84,6 +98,11 @@ const routes = [
     path:'/mine',
     component:QRMine
   },
+  {
+    path:'/mvdetail',
+    component:MvDetail
+  },
+  
 ]
 
 export default routes

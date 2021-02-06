@@ -2,6 +2,7 @@
   "name": "qr-music",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@craco/craco": "^6.0.0",
@@ -52,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-dplayer": "^0.4.2"
   }
 }

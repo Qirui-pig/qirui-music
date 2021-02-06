@@ -4,7 +4,7 @@ export const headerLinks = [
     link: "/discover"
   },
   {
-    title: "我的音乐",
+    title: "视频",
     link: "/mine"
   },
 ]
