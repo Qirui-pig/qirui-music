@@ -5,10 +5,11 @@ import React, {
 } from 'react'
 
 import { Tag } from 'antd'
+import { ReactSVG } from 'react-svg'
 
 import { DjDetailWrapper } from './style'
 import { getDjDetail } from '@/api/djradio'
-import react from '@/assets/svg/react.svg'
+import reactsvg from '@/assets/svg/react.svg'
 import { imageFormat } from '@/utils/format'
 import LoadImage from '@/components/loading-image'
 
@@ -42,7 +43,7 @@ export default memo(function DjDetail(props) {
           </div>
         </div>
       </div>
-      <img src={react} alt='react' className="react-svg" />
+      <ReactSVG src={reactsvg} className="react-svg" />
       <p className="title">功能待完善</p>
     </DjDetailWrapper>
   )

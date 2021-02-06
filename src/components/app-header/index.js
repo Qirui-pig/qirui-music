@@ -1,24 +1,26 @@
-import React, { memo, useState, 
-// useEffect
- } from 'react'
+import React, {
+  memo, useState,
+  // useEffect
+} from 'react'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-import { Input, Modal, Form, Button,message } from 'antd'
+import { Input, Modal, Form, Button, message } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
-
+import { ReactSVG } from 'react-svg'
 
 import { headerLinks } from '@/common/local-data'
 import { HeaderWrapper, HeaderLeft, HeaderRight } from './style'
 import { changeUseInfoAction } from './store'
-import { login,
-// loginByQr,
-// getQr,checkQr 
+import {
+  login,
+  // loginByQr,
+  // getQr,checkQr 
 } from '@/api/auth'
 import logo from '@/assets/svg/music.svg'
 
 
-export default memo(function QRAppFooter() {
+export default memo(function QRAppFooter () {
   const [isShow, setIsShow] = useState(false);
   // const [baseQr, setBaseQr] = useState(null)
   // const [key, setKey] = useState(null)
@@ -61,9 +63,9 @@ export default memo(function QRAppFooter() {
   };
   const dispatch = useDispatch()
 
-  const toLogin=(value)=>{
-    login(value).then(res=>{
-      if(res.status === 200){
+  const toLogin = (value) => {
+    login(value).then(res => {
+      if (res.status === 200) {
         dispatch(changeUseInfoAction(res.data))
         setIsShow(false)
         message.success('登录成功')
@@ -88,7 +90,7 @@ export default memo(function QRAppFooter() {
     <HeaderWrapper>
       <div className="content wrap-v2">
         <HeaderLeft>
-          <img src={logo}  className="music-svg" alt='music'/>
+          <ReactSVG src={logo} className="music-svg"/>
           <a href="#/" className="logo">111</a>
           <div className="select-list">
             {
@@ -110,7 +112,7 @@ export default memo(function QRAppFooter() {
         </HeaderRight>
       </div>
       <div className="divider"></div>
-      <Modal title="手机号码登录" visible={isShow} footer={null} maskClosable={true} onCancel={e=>{setIsShow(false)}}>
+      <Modal title="手机号码登录" visible={isShow} footer={null} maskClosable={true} onCancel={e => { setIsShow(false) }}>
         {/* <img src={baseQr} />
         使用 网易云音乐APP 扫码登录
         <br/> */}
@@ -118,14 +120,14 @@ export default memo(function QRAppFooter() {
           {...layout}
           name="basic"
           onFinish={toLogin}
-          // initialValues={{ remember: true }}
+        // initialValues={{ remember: true }}
         >
           <Form.Item
             label="手机号"
             name="phone"
             rules={[{ required: true, message: '请输入手机号' }]}
           >
-            <Input/>
+            <Input />
           </Form.Item>
 
           <Form.Item
@@ -133,11 +135,11 @@ export default memo(function QRAppFooter() {
             name="password"
             rules={[{ required: true, message: '请输入密码' }]}
           >
-            <Input.Password/>
+            <Input.Password />
           </Form.Item>
 
           <Form.Item {...tailLayout}>
-            <Button htmlType="submit" type="primary" style={{'width':'200px'}}>
+            <Button htmlType="submit" type="primary" style={{ 'width': '200px' }}>
               登录
             </Button>
           </Form.Item>

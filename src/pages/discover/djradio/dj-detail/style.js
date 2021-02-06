@@ -4,6 +4,7 @@ export const DjDetailWrapper = styled.div`
   padding:30px;
   border-left:1px solid #a1a1a1;
   border-right:1px solid #a1a1a1;
+  position: relative;
   .d-top{
     padding:30px;
     display:flex;
@@ -56,13 +57,18 @@ export const DjDetailWrapper = styled.div`
   .react-svg{
     display: inline-block;
     vertical-align: middle;
-    width: 50%;
-    margin-left:25%;
-    height: 50%;
+    /* margin: 0 auto; */
+    position: absolute;
+    left: 50%;
+    top:50%;
+    opacity:.4;
+    transform: translateX(-50%);
   }
   .title{
+    height:300px;
     text-align: center;
     font-size: 22px;
+    opacity:.4;
     color: skyblue;
     font-weight: 600;
   }

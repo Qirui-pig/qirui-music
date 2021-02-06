@@ -30,6 +30,10 @@ export const HeaderLeft = styled.div`
     vertical-align: middle;
     width: 40px;
     height: 60px;
+    svg{
+      width: 40px;
+      height: 74px;
+    }
   }
   display:flex;
   justify-content:space-between;
