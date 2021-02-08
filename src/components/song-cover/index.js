@@ -1,9 +1,8 @@
 import React, { memo } from 'react'
 
-import { Image,Spin } from 'antd'
-
 import { SongCoverWrapper } from './style'
-import { imageFormat, unitFormat } from '@/utils/format'
+import { unitFormat } from '@/utils/format'
+import LoadImage from '@/components/loading-image'
 
 export default memo(function SongCover(props) {
   const { info } = props
@@ -11,7 +10,7 @@ export default memo(function SongCover(props) {
   return (
     <SongCoverWrapper>
       <div className="cover-top">
-        <Image src={imageFormat(info.picUrl, 140)} preview={false} width={140} heigh={140} placeholder={<Spin style={{textAlign: 'center',padding:'60px'}} />} />
+        <LoadImage src={info.picUrl} width={140}/>
         <div className="cover sprite_covor">
           <div className="info sprite_covor">
             <span>

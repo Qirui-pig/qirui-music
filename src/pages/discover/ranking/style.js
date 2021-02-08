@@ -17,6 +17,7 @@ export const QRRankingWrapper = styled.div`
     height:auto;
     .left{
       width:240px;
+      height:auto;
       .list-header{
         margin-top:25px;
         padding: 0 10px 12px 20px;
