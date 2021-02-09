@@ -1,19 +1,21 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-// const QRDiscover =  React.lazy(_=>import('@/pages/discover')) 
-// const QRRecommend =  React.lazy(_=>import('@/pages/discover/recommend')) 
-// const QRRanking =  React.lazy(_=>import('@/pages/discover/ranking')) 
-// const QRSong =  React.lazy(_=>import('@/pages/discover/song')) 
-// const QRDjRadio =  React.lazy(_=>import('@/pages/discover/djradio')) 
-// const QRArtist =  React.lazy(_=>import('@/pages/discover/artist')) 
-// const QRAlbum =  React.lazy(_=>import('@/pages/discover/album')) 
-// const SongDetail =  React.lazy(_=>import('@/pages/play')) 
-// const PlayGroup =  React.lazy(_=>import('@/pages/discover/play-list')) 
-// const DjDetail =  React.lazy(_=>import('@/pages/discover/djradio/dj-detail')) 
-// const AlbumDetail =  React.lazy(_=>import('@/pages/discover/album/album-detail')) 
-// const QRFriend =  React.lazy(_=>import('@/pages/friend')) 
-// const QRMine =  React.lazy(_=>import('@/pages/mine')) 
+// const QRDiscover =  React.lazy(()=>import('../pages/discover')) 
+// const QRRecommend =  React.lazy(()=>import('../pages/discover/recommend')) 
+// const QRRanking =  React.lazy(()=>import('../pages/discover/ranking')) 
+// const QRSong =  React.lazy(()=>import('../pages/discover/song')) 
+// const QRDjRadio =  React.lazy(()=>import('../pages/discover/djradio')) 
+// const QRArtist =  React.lazy(()=>import('../pages/discover/artist')) 
+// const QRAlbum =  React.lazy(()=>import('../pages/discover/album')) 
+// const SongDetail =  React.lazy(()=>import('../pages/play')) 
+// const PlayGroup =  React.lazy(()=>import('../pages/discover/play-list')) 
+// const DjDetail =  React.lazy(()=>import('../pages/discover/djradio/dj-detail')) 
+// const AlbumDetail =  React.lazy(()=>import('../pages/discover/album/album-detail')) 
+// const QRFriend =  React.lazy(()=>import('../pages/friend')) 
+// const QRMine =  React.lazy(()=>import('../pages/mine')) 
+// const MvDetail =  React.lazy(()=>import('../pages/mine/mv-detail')) 
+
 import QRDiscover from '@/pages/discover'
 import QRRecommend from '@/pages/discover/recommend'
 import QRRanking from '@/pages/discover/ranking'

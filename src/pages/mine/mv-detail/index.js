@@ -17,7 +17,7 @@ export default memo(function MvDetail (props) {
 
   useEffect(() => {
     // 10849296
-
+    window.scrollTo(0,0)
     getMvDetail(id).then(res => {
       setVideoDetail(res.data.data)
     })

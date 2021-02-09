@@ -18,6 +18,7 @@ export default memo(function PlayGroup(props) {
   }), shallowEqual)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     let id = props.location.state.id
     if (props.location.state !== {}) {
       dispatch(getPlayGroupAction(id))
@@ -123,13 +124,15 @@ export default memo(function PlayGroup(props) {
               </div>
               <div className="tags">
                 标签：
-                {tags.map(item => {
-                return (
-                  <div className="item" key={item}>
-                    {item}
-                  </div>
-                )
-              })}
+                {
+                  tags.map(item => {
+                    return (
+                      <div className="item" key={item}>
+                        {item}
+                      </div>
+                    )
+                  })
+                }
               </div>
               <div className="desc">{desc}</div>
 

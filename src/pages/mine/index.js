@@ -1,19 +1,26 @@
 import React, { memo, useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
+import { Pagination } from 'antd'
+
 import { MvWrapper } from './style'
 import { getNewMv, getRecommendMv, getAllMv } from '@/api/mv.js'
 import LoadImage from '@/components/loading-image'
 
 export default memo(function QRMine () {
-  const list = ['全部', '内地', '港台', '欧美', '日本', '韩国']
+  let list = ['全部', '内地', '港台', '欧美', '日本', '韩国']
+
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [newMvList, setNewMvList] = useState([])
   const [recommendMvList, setRecommendMvList] = useState([])
   const [allMvList, setAllMvList] = useState([])
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    window.scrollTo(0,0)
+    setCurrentPage(1)
+    setCurrentIndex(0)
     getNewMv().then(res => {
       setNewMvList([...res.data.data])
     })
@@ -27,7 +34,15 @@ export default memo(function QRMine () {
 
   const typeChange = (item, index) => {
     setCurrentIndex(index)
+    setCurrentPage(1)
     getAllMv(10, 0, item).then(res => {
+      setAllMvList([...res.data.data])
+    })
+  }
+
+  const changePage = (page, pageSize) => {
+    setCurrentPage(page)
+    getAllMv(10,page * pageSize,list[currentIndex]).then(res => {
       setAllMvList([...res.data.data])
     })
   }
@@ -118,6 +133,8 @@ export default memo(function QRMine () {
             })
           }
         </ul>
+        <Pagination style={{ 'textAlign': 'center' }} showSizeChanger={false} current={currentPage}  total={500} defaultPageSize={10} onChange={changePage} />
+        
       </div>
 
 

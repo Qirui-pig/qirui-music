@@ -1,6 +1,8 @@
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
+import { Skeleton } from 'antd'
+
 import { getDjCatAction,changeCurrentTypeAction } from './store/actionCreators'
 import { DjRadioWrapper } from './style'
 import DjHome  from './cpn/dj-home'
@@ -16,6 +18,7 @@ export default memo(function QRDjRadio () {
   }), shallowEqual)
 
   useEffect(() => {
+    window.scrollTo(0,0)
     dispatch(getDjCatAction())
     dispatch(changeCurrentTypeAction(''))
   }, [dispatch])
@@ -31,7 +34,7 @@ export default memo(function QRDjRadio () {
       {/* todo tab切换栏 */}
       <ul className="tab-content">
         {
-          djCat.map(item=>{
+          djCat?djCat.map(item=>{
             return (
               <li onClick={e=>changeType(item.id)} key={item.id} className={["tab-item ",item.id===currentType?'active':''].join('')}>
                 <div className="image">
@@ -41,7 +44,7 @@ export default memo(function QRDjRadio () {
                 </div>
               </li>
             )
-          })
+          }):<Skeleton active paragraph={{ rows: 4 }}/>
         }
       </ul>
       {/* 判断current-type是否存在 如果不存在 就是默认radio推荐页 在则是另外一个组件 */}

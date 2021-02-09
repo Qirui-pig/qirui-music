@@ -36,6 +36,9 @@ export const AlbumWrapper = styled.div`
       }
     }
     .h-list{
+      .ant-skeleton {
+        padding: 16px;
+      }
       display:flex;
       align-items:center;
       flex-wrap:wrap;

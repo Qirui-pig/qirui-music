@@ -28,6 +28,7 @@ export default memo(function QRArtist() {
   }), shallowEqual)
 
   useEffect(() => {
+    window.scrollTo(0,0)
     dispatch(getArtistAction(-1, -1, 25,))
   }, [dispatch])
 

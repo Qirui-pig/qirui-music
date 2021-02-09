@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Carousel, Row, Col, Tag } from 'antd'
+import { Carousel, Row, Col, Tag, Skeleton  } from 'antd'
 import ReactAplayer from 'react-aplayer';
 
 import { DjHomeWrapper, ImageItem } from './style'
@@ -82,13 +82,13 @@ export default memo(function DjHome() {
       {/* banners */}
       <Carousel autoplay>
         {
-          banners.map(item => {
+          banners?banners.map(item => {
             return (
               <ImageItem key={item.pic} >
                 <img src={item.pic} alt={item.typeTitle} />
               </ImageItem>
             )
-          })
+          }):<Skeleton active paragraph={{ rows: 6 }}/>
         }
       </Carousel>
       {/* program */}
@@ -105,7 +105,7 @@ export default memo(function DjHome() {
           <div className="p-header">推荐节目</div>
           <ul className="list">
             {
-              recommend.map((item, index) => {
+              recommend?recommend.map((item, index) => {
                 return (
                   <li key={item.coverUrl} className={['list-item ', index % 2 !== 1 ? 'bg' : ''].join('')}>
                     <Row>
@@ -123,7 +123,7 @@ export default memo(function DjHome() {
                     </Row>
                   </li>
                 )
-              })
+              }):<Skeleton active avatar paragraph={{ rows: 17 }}/>
             }
           </ul>
         </div>
@@ -131,7 +131,7 @@ export default memo(function DjHome() {
           <div className="p-header">节目排行榜</div>
           <ul className="list">
             {
-              ranking.map((item, index) => {
+              ranking?ranking.map((item, index) => {
                 let iten = item.program
                 return (
                   <li key={iten.coverUrl} className={['list-item ', index % 2 !== 1 ? 'bg' : ''].join('')}>
@@ -150,7 +150,7 @@ export default memo(function DjHome() {
                     </Row>
                   </li>
                 )
-              })
+              }):<Skeleton active avatar paragraph={{ rows: 17 }}/>
             }
           </ul>
         </div>
@@ -163,7 +163,7 @@ export default memo(function DjHome() {
               <div className="dj-header">{item.categoryName}</div>
               <ul className="dj-list">
                 {
-                  item.radios && item.radios.map(iten => {
+                  item.radios ? item.radios.map(iten => {
                     return (
                       <li className="dj-item">
                         <NavLink to={{ pathname: '/discover/djDetail', state: { id: iten.id } }}>
@@ -179,7 +179,7 @@ export default memo(function DjHome() {
                         </NavLink>
                       </li>
                     )
-                  })
+                  }):<Skeleton active avatar paragraph={{ rows: 4 }}/>
                 }
               </ul>
             </div>

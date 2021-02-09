@@ -18,7 +18,11 @@ export const QRRankingWrapper = styled.div`
     .left{
       width:240px;
       height:auto;
+      .ant-skeleton{
+        padding: 8px;
+      }
       .list-header{
+        width: 240px;
         margin-top:25px;
         padding: 0 10px 12px 20px;
         font-size: 15px;
@@ -108,7 +112,7 @@ export const QRRankingWrapper = styled.div`
         margin:0 40px;
         .table-header{
           height: 40px;
-          border-bottom: 2px solid #c20c0c;
+          border-bottom: 2px solid#87CEFA;
           display:flex;
           align-items:center;
           justify-content:space-between;

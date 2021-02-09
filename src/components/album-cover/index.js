@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import LazyLoad from 'react-lazyload';
+import { NavLink } from 'react-router-dom'
 
 import { Image,Spin } from 'antd'
 
@@ -15,7 +16,7 @@ export default memo(function AlbumCover(props) {
         <LazyLoad height={100} offset={100}>
           <Image src={imageFormat(info.picUrl,100)} preview={false} width={100} placeholder={<Spin style={{textAlign: 'center',padding:'40px'}} />} />
         </LazyLoad>
-        <a href="/" className="cover image_cover">{info.name}</a>
+        <NavLink to={{pathname:'/discover/albumDetail',state:{id:info.id}}} className="cover image_cover">{info.name}</NavLink>
       </div>
       <div className="album-info">
         <div className="name text-nowrap">{info.name}</div>

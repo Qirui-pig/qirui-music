@@ -42,6 +42,9 @@ export const QRSongWrapper = styled.div`
     }
   }
   .content{
+    .ant-skeleton {
+      padding: 20px;
+    }
     display:flex;
     /* justify-content:space-between; */
     align-items:center;

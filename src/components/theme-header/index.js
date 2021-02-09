@@ -1,9 +1,11 @@
 import React, { memo } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import { HeaderWrapper } from './style'
 
 export default memo(function ThemeHeader(props) {
-  const { title,keywords } = props
+  const { title,keywords=[],link } = props
+  console.log(link)
   return (
     <HeaderWrapper>
       <div className="left">
@@ -21,7 +23,7 @@ export default memo(function ThemeHeader(props) {
         </div>
       </div>
       <div className="right">
-        <a href="/">更多</a>
+        <NavLink to={{pathname:link}}>更多</NavLink>
         <i className="icon sprite_02"></i>
       </div>
     </HeaderWrapper>

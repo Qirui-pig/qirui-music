@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import LazyLoad from 'react-lazyload'
 
-import { Image,Spin } from 'antd'
+import { Image,Spin,Skeleton } from 'antd'
 
 import ThemeHeader from '@/components/theme-header2'
 import { getTopListAction } from '../../store/actionCreators'
@@ -26,12 +26,16 @@ export default memo(function RecommendRanking() {
 
   return (
     <RankingWrapper>
-      <ThemeHeader title="榜单" />
-      <div className="top">
-        <TopList info={topList} tracks={topList.tracks} />
-        <TopList info={newList} tracks={newList.tracks} />
-        <TopList info={originList} tracks={originList.tracks} />
-      </div>
+      <ThemeHeader title="榜单" link="/discover/ranking" />
+      {
+        newList?(
+          <div className="top">
+            <TopList info={topList} tracks={topList.tracks} />
+            <TopList info={newList} tracks={newList.tracks} />
+            <TopList info={originList} tracks={originList.tracks} />
+          </div>
+        ):<Skeleton active paragraph={{ rows: 8 }}/>
+      }
     </RankingWrapper>
   )
 })

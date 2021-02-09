@@ -2,12 +2,12 @@ import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import LazyLoad from 'react-lazyload';
 
-import { Table,Statistic,Image,Spin } from 'antd';
+import { Table, Statistic, Image, Spin, Skeleton } from 'antd';
 
 import { QRRankingWrapper } from './style'
 import { getTopListAction, getTopListDetailAction } from './store/actionCreators'
 import { getCurrentSongAction } from '../../play/store'
-import { imageFormat, formatMonthDay,formatMinuteSecond } from '@/utils/format'
+import { imageFormat, formatMonthDay, formatMinuteSecond } from '@/utils/format'
 
 export default memo(function QRRanking(props) {
 
@@ -22,18 +22,19 @@ export default memo(function QRRanking(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     dispatch(getTopListAction())
   }, [dispatch])
 
   useEffect(() => {
-    if(props.location.state){
-      window.scrollTo(0,0)
+    if (props.location.state) {
+      window.scrollTo(0, 0)
       dispatch(getTopListDetailAction(props.location.state.id))
       setCurrentIndex(-1)
-    }else{
+    } else {
       dispatch(getTopListDetailAction(19723756))
     }
-  }, [dispatch,props])
+  }, [dispatch, props])
 
   const changeList = (item, index) => {
     // console.log()
@@ -44,8 +45,8 @@ export default memo(function QRRanking(props) {
   const imgUrl = (topListDetail && imageFormat(topListDetail.coverImgUrl, 150)) || ''
   const title = (topListDetail && topListDetail.name) || ''
   const updateTime = (topListDetail && formatMonthDay(topListDetail.updateTime)) || ''
-  const desc = (topListDetail && topListDetail.description)||''
-  const count = (topListDetail && topListDetail.playCount)||''
+  const desc = (topListDetail && topListDetail.description) || ''
+  const count = (topListDetail && topListDetail.playCount) || ''
 
   const tracks = (topListDetail && topListDetail.tracks) || []
 
@@ -59,7 +60,7 @@ export default memo(function QRRanking(props) {
     // debugger
     let params = {
       index: index + 1,
-      imgUrl:imageFormat(al.picUrl,50),
+      imgUrl: imageFormat(al.picUrl, 50),
       id,
       name,
       artist: ar[0].name,
@@ -82,7 +83,7 @@ export default memo(function QRRanking(props) {
       dataIndex: 'id',
       width: 40,
       render: id => (
-          <div  onClick={e => getSong(id)} className="sprite_table icon">&nbsp;</div>
+        <div onClick={e => getSong(id)} className="sprite_table icon">&nbsp;</div>
       )
     },
     {
@@ -91,8 +92,8 @@ export default memo(function QRRanking(props) {
       dataIndex: 'name',
       ellipsis: true,
       width: 300,
-      render: (name,row) => (
-        row.index < 4 ? <div key={row.id}><img className="mr15" src={row.imgUrl} alt=""/><a href="/">{name}</a></div> : <a key={row.id} href="/">{name}</a>
+      render: (name, row) => (
+        row.index < 4 ? <div key={row.id}><img className="mr15" src={row.imgUrl} alt="" /><a href="/">{name}</a></div> : <a key={row.id} href="/">{name}</a>
       )
     },
     {
@@ -117,21 +118,23 @@ export default memo(function QRRanking(props) {
             云音乐榜单
           </div>
           {
-            topList.map((item, index) => {
-              return (
-                <div className={["item ", currentIndex === index ? 'active' : ''].join('')} key={item.name} onClick={e => changeList(item, index)}>
-                  <div className="item-left">
-                  <LazyLoad height={40}>
-                    <Image src={imageFormat(item.coverImgUrl, 40)} height={40} width={40} preview={false} placeholder={<Spin style={{textAlign: 'center',padding:'10px'}} />} />
-                  </LazyLoad>
+            topList ? (
+              topList.map((item, index) => {
+                return (
+                  <div className={["item ", currentIndex === index ? 'active' : ''].join('')} key={item.name} onClick={e => changeList(item, index)}>
+                    <div className="item-left">
+                      <LazyLoad height={40}>
+                        <Image src={imageFormat(item.coverImgUrl, 40)} height={40} width={40} preview={false} placeholder={<Spin style={{ textAlign: 'center', padding: '10px' }} />} />
+                      </LazyLoad>
+                    </div>
+                    <div className="item-right">
+                      <p className="name">{item.name}</p>
+                      <p className="time">{item.updateFrequency}</p>
+                    </div>
                   </div>
-                  <div className="item-right">
-                    <p className="name">{item.name}</p>
-                    <p className="time">{item.updateFrequency}</p>
-                  </div>
-                </div>
-              )
-            })
+                )
+              }) 
+            ) : <Skeleton avatar active paragraph={{ rows: 2 }} />
           }
 
         </div>
@@ -139,9 +142,9 @@ export default memo(function QRRanking(props) {
           <div className="toplist-top">
             <div className="image">
               <LazyLoad height={150}>
-                <Image src={imgUrl} width={150} height={150} preview={false} placeholder={<Spin style={{padding:'70px'}} size="small" />} />
+                <Image src={imgUrl} width={150} height={150} preview={false} placeholder={<Spin style={{ padding: '70px' }} size="small" />} />
               </LazyLoad>
-              <i  className="image-wrap sprite_covor"></i>
+              <i className="image-wrap sprite_covor"></i>
             </div>
             <div className="info">
               <div className="title">{title}</div>

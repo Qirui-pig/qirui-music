@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState, useCallback } from 'react'
 import { useDispatch, shallowEqual, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-import { Pagination } from 'antd'
+import { Pagination,Skeleton } from 'antd'
 
 import { AlbumWrapper } from './style'
 import { getHotAlbumAction, getAllAlbumAction } from './store/actionCreators'
@@ -22,6 +22,7 @@ export default memo(function QRAlubm() {
   }), shallowEqual)
 
   useEffect(() => {
+    window.scrollTo(0,0)
     dispatch(getHotAlbumAction('ALL', 'hot'))
     dispatch(getAllAlbumAction(0))
   }, [dispatch]);
@@ -47,7 +48,7 @@ export default memo(function QRAlubm() {
         </div>
         <ul className="h-list">
           {
-            hotAlbum.map(item => {
+            hotAlbum?(hotAlbum.map(item => {
               return (
                 <NavLink to={{ pathname: '/discover/albumDetail', state:{ id: item.id } }}>
                   <li className="list-item" key={item.id}>
@@ -61,7 +62,7 @@ export default memo(function QRAlubm() {
                   </li>
                 </NavLink>
               )
-            })
+            })):<Skeleton active  paragraph={{ rows: 6 }}/>
           }
         </ul>
       </div>

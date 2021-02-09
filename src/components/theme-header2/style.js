@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.div`
   height:33px;
   padding: 0 10px 4px 8px;
   background-position: -225px -156px;
-  border-bottom: 2px solid #c10d0c;
+  border-bottom: 2px solid #87CEFA;
 
   .left{
     display:flex;

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo,useEffect } from 'react'
 // import {connect} from 'react-redux'
 
 import QRBanners from './cpn/top-banner'
@@ -9,6 +9,9 @@ import { RecommendWrapper,Content,RecommendLeft,RecommendRight } from './style'
 
 function QRRecommend(props) {
   // const { getBanners } = props
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, []);
 
   return (
     <RecommendWrapper>

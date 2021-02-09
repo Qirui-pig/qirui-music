@@ -3,7 +3,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import LazyLoad from 'react-lazyload';
 
-import { Button, Pagination, Card, Tag, Spin,Image } from 'antd'
+import { Button, Pagination, Card, Tag, Spin,Image,Skeleton  } from 'antd'
 
 import { QRSongWrapper } from './style'
 import { getCatListAction, getSongListAction } from './store/actionCreators'
@@ -63,11 +63,12 @@ export default memo(function QRSong() {
       <div className="cat">
         <Card title='歌单类型' className="top-card">
           {
-            catList.map(item => {
+            catList?catList.map(item => {
               return (
                 <Tag  onClick={e => tagChange(item)} key={item.name} className="tag-item" color={getRandomColor()}>{item.name}</Tag>
               )
-            })
+            }):
+            <Skeleton active paragraph={{ rows: 4 }}/>
           }
         </Card>
       </div>
@@ -80,7 +81,7 @@ export default memo(function QRSong() {
       </div>
       <ul className="content">
         {
-          deWeightTree.map(item => {
+          deWeightTree?deWeightTree.map(item => {
             return (
               <li key={item.coverImgUrl} className="item">
                 <div className="image">
@@ -99,7 +100,7 @@ export default memo(function QRSong() {
                 </div>
               </li>
             )
-          })
+          }):<Skeleton active paragraph={{ rows: 20 }}/>
         }
       </ul>
 

@@ -61,7 +61,7 @@ export const TopListWrapper = styled.div`
       align-items:center;
 
       :nth-child(-n+3) .rank{
-        color:#c10d0c;
+        color:#87CEFA;
       }
 
       .rank{
