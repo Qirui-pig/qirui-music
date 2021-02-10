@@ -35,18 +35,18 @@
 #### 项目构成
 <pre>                 
 ├── build            		   // 项目build目录
-├── craco.config.js        // 项目配置文件
-├── package.json      		 // 项目配置文件
-├── public       			     // 放置静态资源
-├── src                		 // 生产目录
+├── craco.config.js            // 项目配置文件
+├── package.json      		   // 项目配置文件
+├── public       			   // 放置静态资源
+├── src                		   // 生产目录
 │   ├── api       			   // api请求
-│   ├── assets             // 图片资源
-│   ├── common          	 // 公共的数据资源
-│   ├── components     		 // 各种组件
-│   ├── pages          		 // 页面
+│   ├── assets                 // 图片资源
+│   ├── common          	   // 公共的数据资源
+│   ├── components     		   // 各种组件
+│   ├── pages          		   // 页面
 │   ├── router   		       // 路由配置器
-│   ├── store           	 // redux状态管理器
-│   ├── utils         	   // 工具函数
-│   ├── App.js         	   // 主页面
-│   └── index.js       	   // 入口
+│   ├── store           	   // redux状态管理器
+│   ├── utils         	       // 工具函数
+│   ├── App.js         	       // 主页面
+│   └── index.js       	       // 入口
 </pre>
