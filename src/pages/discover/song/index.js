@@ -63,7 +63,7 @@ export default memo(function QRSong() {
       <div className="cat">
         <Card title='歌单类型' className="top-card">
           {
-            catList?catList.map(item => {
+            catList.length>0?catList.map(item => {
               return (
                 <Tag  onClick={e => tagChange(item)} key={item.name} className="tag-item" color={getRandomColor()}>{item.name}</Tag>
               )
@@ -81,7 +81,7 @@ export default memo(function QRSong() {
       </div>
       <ul className="content">
         {
-          deWeightTree?deWeightTree.map(item => {
+          deWeightTree.length>0?deWeightTree.map(item => {
             return (
               <li key={item.coverImgUrl} className="item">
                 <div className="image">

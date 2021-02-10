@@ -48,7 +48,7 @@ export default memo(function QRAlubm() {
         </div>
         <ul className="h-list">
           {
-            hotAlbum?(hotAlbum.map(item => {
+            hotAlbum.length>0?(hotAlbum.map(item => {
               return (
                 <NavLink to={{ pathname: '/discover/albumDetail', state:{ id: item.id } }}>
                   <li className="list-item" key={item.id}>
@@ -79,7 +79,7 @@ export default memo(function QRAlubm() {
         </div>
         <ul className="h-list">
           {
-            allAlbum.map(item => {
+            allAlbum.length>0?allAlbum.map(item => {
               return (
                 <NavLink to={{ pathname: '/discover/albumDetail', state:{ id: item.id } }}>
                   <li className="list-item" key={item.id}>
@@ -93,7 +93,7 @@ export default memo(function QRAlubm() {
                   </li>
                 </NavLink>
               )
-            })
+            }):<Skeleton active  paragraph={{ rows: 20 }}/>
           }
         </ul>
         <Pagination style={{ 'textAlign': 'center', 'marginBottom': '10px' }} showSizeChanger={false} current={currentPage} total={500} onChange={changePage} defaultPageSize={35} />

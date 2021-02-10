@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
-import { Divider, Table, Comment, List } from 'antd';
+import { Divider, Table, Comment, List, Skeleton } from 'antd';
 
 import { PlayGroupWrapper } from './style'
 import { getPlayGroupAction, getPlayListCommentAction } from './store/actionCreators'
@@ -27,7 +27,7 @@ export default memo(function PlayGroup(props) {
     // dispatch(getPlayGroupAction(5461296669))
   }, [props.location.state, dispatch])
 
-  console.log(playGroup)
+  // console.log(playGroup)
   const playGroupImg = (playGroup && imageFormat(playGroup.coverImgUrl, 200)) || ''
   const playGroupTitle = (playGroup && playGroup.name) || ''
   const authImg = (playGroup.creator && imageFormat(playGroup.creator.avatarUrl, 35)) || ''
@@ -111,33 +111,37 @@ export default memo(function PlayGroup(props) {
     <PlayGroupWrapper className="wrap-v2">
       <div className="content">
         <div className="left">
-          <div className="main-top">
-            <div className="image">
-              <img src={playGroupImg} alt="" />
-              <span className="sprite_covor"></span>
-            </div>
-            <div className="info">
-              <p className="title">{playGroupTitle}</p>
-              <div className="auth">
-                <img src={authImg} alt="" />
-                <span>{`${authName} ${createTime}  创建`}</span>
-              </div>
-              <div className="tags">
-                标签：
-                {
-                  tags.map(item => {
-                    return (
-                      <div className="item" key={item}>
-                        {item}
-                      </div>
-                    )
-                  })
-                }
-              </div>
-              <div className="desc">{desc}</div>
+          {
+            playGroup.hasOwnProperty('coverImgUrl') ? (
+              <div className="main-top">
+                <div className="image">
+                  <img src={playGroupImg} alt="" />
+                  <span className="sprite_covor"></span>
+                </div>
+                <div className="info">
+                  <p className="title">{playGroupTitle}</p>
+                  <div className="auth">
+                    <img src={authImg} alt="" />
+                    <span>{`${authName} ${createTime}  创建`}</span>
+                  </div>
+                  <div className="tags">
+                    标签：
+                    {
+                      tags.map(item => {
+                        return (
+                          <div className="item" key={item}>
+                            {item}
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                  <div className="desc">{desc}</div>
 
-            </div>
-          </div>
+                </div>
+              </div>
+            ) : <Skeleton avatar active paragraph={{ rows: 6 }} />
+          }
           <Divider />
           <div className="song-table">
             <Table showHeader stripe columns={columns} dataSource={dataSource}></Table>

@@ -36,6 +36,9 @@ export const QRArtistWrapper = styled.div`
     align-items:center;
     flex-wrap:wrap;
     justify-content:space-around;
+    .ant-skeleton-content {
+      padding: 24px;
+    }
     .art-person{
       padding:25px;
       .image{

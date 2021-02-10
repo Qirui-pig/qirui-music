@@ -28,7 +28,7 @@ export default memo(function RecommendRanking() {
     <RankingWrapper>
       <ThemeHeader title="榜单" link="/discover/ranking" />
       {
-        newList?(
+        newList.length>0?(
           <div className="top">
             <TopList info={topList} tracks={topList.tracks} />
             <TopList info={newList} tracks={newList.tracks} />

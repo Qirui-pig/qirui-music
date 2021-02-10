@@ -34,7 +34,7 @@ export default memo(function QRDjRadio () {
       {/* todo tab切换栏 */}
       <ul className="tab-content">
         {
-          djCat?djCat.map(item=>{
+          djCat.length>0?djCat.map(item=>{
             return (
               <li onClick={e=>changeType(item.id)} key={item.id} className={["tab-item ",item.id===currentType?'active':''].join('')}>
                 <div className="image">

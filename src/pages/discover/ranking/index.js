@@ -118,7 +118,7 @@ export default memo(function QRRanking(props) {
             云音乐榜单
           </div>
           {
-            topList ? (
+            topList.length > 0 ? (
               topList.map((item, index) => {
                 return (
                   <div className={["item ", currentIndex === index ? 'active' : ''].join('')} key={item.name} onClick={e => changeList(item, index)}>
@@ -133,28 +133,33 @@ export default memo(function QRRanking(props) {
                     </div>
                   </div>
                 )
-              }) 
+              })
             ) : <Skeleton avatar active paragraph={{ rows: 2 }} />
           }
 
         </div>
         <div className="right">
-          <div className="toplist-top">
-            <div className="image">
-              <LazyLoad height={150}>
-                <Image src={imgUrl} width={150} height={150} preview={false} placeholder={<Spin style={{ padding: '70px' }} size="small" />} />
-              </LazyLoad>
-              <i className="image-wrap sprite_covor"></i>
-            </div>
-            <div className="info">
-              <div className="title">{title}</div>
-              <div className="time">
-                <i className="sprite_icon2"></i>
-                <span>更新时间：{updateTime}</span>
+          {
+            topListDetail.hasOwnProperty('coverImgUrl') ? (
+              <div className="toplist-top">
+                <div className="image">
+                  <LazyLoad height={150}>
+                    <Image src={imgUrl} width={150} height={150} preview={false} placeholder={<Spin style={{ padding: '70px' }} size="small" />} />
+                  </LazyLoad>
+                  <i className="image-wrap sprite_covor"></i>
+                </div>
+                <div className="info">
+                  <div className="title">{title}</div>
+                  <div className="time">
+                    <i className="sprite_icon2"></i>
+                    <span>更新时间：{updateTime}</span>
+                  </div>
+                  <div>{desc}</div>
+                </div>
               </div>
-              <div>{desc}</div>
-            </div>
-          </div>
+            ) : <Skeleton active paragraph={{ rows: 5 }} />
+          }
+
           <div className="toplist-table">
             <div className="table-header">
               <div className="title">

@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect, useCallback } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
-import { Pagination, Drawer,Image,Spin } from 'antd'
+import { Pagination, Drawer,Image,Spin,Skeleton } from 'antd'
 
 import { QRArtistWrapper } from './style'
 import { getArtistAction,getArtistSongAction,getArtistAlbumAction,getArtistDescAction } from './store/actionCreators'
@@ -113,7 +113,7 @@ export default memo(function QRArtist() {
 
       <div className="art-content">
         {
-          artistList.map(item => {
+          artistList.length>0?artistList.map(item => {
             return (
               <div key={item.id} className="art-person">
                 <div className="image" onClick={e=>showDrawer(item)}>
@@ -122,7 +122,9 @@ export default memo(function QRArtist() {
                 <span className="name" onClick={e=>showDrawer(item)} >{item.name}</span>
               </div>
             )
-          })
+          }):
+          <Skeleton active paragraph={{ rows: 16 }} />
+
         }
         <Pagination  style={{ 'textAlign': 'center','marginBottom':'10px' }} showSizeChanger={false} current={currentPage} total={500} onChange={changePage} />
 

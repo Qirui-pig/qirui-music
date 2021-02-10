@@ -1,13 +1,13 @@
 import React, { memo, useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Pagination } from 'antd'
+import { Pagination, Skeleton } from 'antd'
 
 import { MvWrapper } from './style'
 import { getNewMv, getRecommendMv, getAllMv } from '@/api/mv.js'
 import LoadImage from '@/components/loading-image'
 
-export default memo(function QRMine () {
+export default memo(function QRMine() {
   let list = ['全部', '内地', '港台', '欧美', '日本', '韩国']
 
 
@@ -18,7 +18,7 @@ export default memo(function QRMine () {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
     setCurrentPage(1)
     setCurrentIndex(0)
     getNewMv().then(res => {
@@ -42,7 +42,7 @@ export default memo(function QRMine () {
 
   const changePage = (page, pageSize) => {
     setCurrentPage(page)
-    getAllMv(10,page * pageSize,list[currentIndex]).then(res => {
+    getAllMv(10, page * pageSize, list[currentIndex]).then(res => {
       setAllMvList([...res.data.data])
     })
   }
@@ -50,13 +50,14 @@ export default memo(function QRMine () {
 
   return (
     <MvWrapper className="wrap-v2">
+
       <div className="m-box">
         <div className="m-header">
           <span className="title">最新MV</span>
         </div>
         <ul className="m-content">
           {
-            newMvList && newMvList.map(item => {
+            newMvList.length > 0 ? newMvList.map(item => {
               return (
                 <li key={item.cover} className="item">
                   <NavLink to={{ pathname: '/mvdetail', state: { id: item.id } }}>
@@ -71,7 +72,7 @@ export default memo(function QRMine () {
                   </NavLink>
                 </li>
               )
-            })
+            }) : <Skeleton active paragraph={{ rows: 6 }} />
           }
         </ul>
       </div>
@@ -82,7 +83,7 @@ export default memo(function QRMine () {
         </div>
         <ul className="m-content" style={{ height: 200 + 'px' }} >
           {
-            recommendMvList && recommendMvList.map(item => {
+            recommendMvList.length > 0 ? recommendMvList.map(item => {
               return (
                 <li key={item.cover} className="item">
                   <NavLink to={{ pathname: '/mvdetail', state: { id: item.id } }}>
@@ -97,10 +98,11 @@ export default memo(function QRMine () {
                   </NavLink>
                 </li>
               )
-            })
+            }) : <Skeleton active paragraph={{ rows: 3 }} />
           }
         </ul>
       </div>
+
 
       <div className="m-box">
         <div className="m-header">
@@ -115,7 +117,7 @@ export default memo(function QRMine () {
         </div>
         <ul className="m-content">
           {
-            allMvList && allMvList.map(item => {
+            allMvList.length>0? allMvList.map(item => {
               return (
                 <li key={item.cover} className="item">
                   <NavLink to={{ pathname: '/mvdetail', state: { id: item.id } }}>
@@ -130,11 +132,11 @@ export default memo(function QRMine () {
                   </NavLink>
                 </li>
               )
-            })
+            }):<Skeleton active paragraph={{ rows: 6 }} />
           }
         </ul>
-        <Pagination style={{ 'textAlign': 'center' }} showSizeChanger={false} current={currentPage}  total={500} defaultPageSize={10} onChange={changePage} />
-        
+        <Pagination style={{ 'textAlign': 'center' }} showSizeChanger={false} current={currentPage} total={500} defaultPageSize={10} onChange={changePage} />
+
       </div>
 
 

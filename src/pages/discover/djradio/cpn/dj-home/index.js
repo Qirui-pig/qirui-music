@@ -82,7 +82,7 @@ export default memo(function DjHome() {
       {/* banners */}
       <Carousel autoplay>
         {
-          banners?banners.map(item => {
+          banners.length>0?banners.map(item => {
             return (
               <ImageItem key={item.pic} >
                 <img src={item.pic} alt={item.typeTitle} />
@@ -105,7 +105,7 @@ export default memo(function DjHome() {
           <div className="p-header">推荐节目</div>
           <ul className="list">
             {
-              recommend?recommend.map((item, index) => {
+              recommend.length>0?recommend.map((item, index) => {
                 return (
                   <li key={item.coverUrl} className={['list-item ', index % 2 !== 1 ? 'bg' : ''].join('')}>
                     <Row>
@@ -131,7 +131,7 @@ export default memo(function DjHome() {
           <div className="p-header">节目排行榜</div>
           <ul className="list">
             {
-              ranking?ranking.map((item, index) => {
+              ranking.length>0?ranking.map((item, index) => {
                 let iten = item.program
                 return (
                   <li key={iten.coverUrl} className={['list-item ', index % 2 !== 1 ? 'bg' : ''].join('')}>
@@ -157,13 +157,13 @@ export default memo(function DjHome() {
       </div>
       {/* different type */}
       {
-        typeList.map(item => {
+        typeList.length>0?typeList.map(item => {
           return (
             <div key={item.categoryName} className="dj">
               <div className="dj-header">{item.categoryName}</div>
               <ul className="dj-list">
                 {
-                  item.radios ? item.radios.map(iten => {
+                  item.radios.length>0 ? item.radios.map(iten => {
                     return (
                       <li className="dj-item">
                         <NavLink to={{ pathname: '/discover/djDetail', state: { id: iten.id } }}>
@@ -184,7 +184,7 @@ export default memo(function DjHome() {
               </ul>
             </div>
           )
-        })
+        }):<Skeleton active paragraph={{ rows: 20 }}/>
       }
 
     </DjHomeWrapper>

@@ -52,7 +52,7 @@ export default memo(function QRDrawerContent(props) {
             </Descriptions>
             <Descriptions title="详细" bordered>
               {
-                artistDesc.introduction?artistDesc.introduction.map(item=>{
+                artistDesc.introduction.length>0?artistDesc.introduction.map(item=>{
                   return (
                     <Descriptions.Item key={item.ti}  span={4} label={item.ti} >{item.txt}</Descriptions.Item>
                   )

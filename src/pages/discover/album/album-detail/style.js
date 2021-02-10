@@ -6,6 +6,9 @@ export const AlbumDetailWrapper = styled.div`
   border-right:1px solid #a1a1a1;
   border-left:1px solid #a1a1a1;
   background: url(${bgImg}) repeat-y;
+  .ant-skeleton {
+    width: 643px;
+  }
   .d-left{
     width:709px;
     padding-right:50px;

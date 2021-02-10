@@ -28,7 +28,7 @@ export default memo(function HotRecommend() {
       <ThemeHeader title="热门推荐" link="/discover/songs" />
       <div className="recommend-list">
         {
-          hotRecommend?(hotRecommend.map(item=>{
+          hotRecommend.length>0?(hotRecommend.map(item=>{
             return (
               <NavLink to={{pathname:"/discover/playGroup",state:{id:item.id}}} key={item.picUrl}>
                 <SongCover info={item} /> 

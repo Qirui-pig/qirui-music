@@ -64,6 +64,9 @@ export const QRRankingWrapper = styled.div`
     }
     .right{
       /* width:740px; */
+      .ant-skeleton {
+        padding: 44px;
+      }
       .toplist-top{
         /* width:740px; */
         height:238px;

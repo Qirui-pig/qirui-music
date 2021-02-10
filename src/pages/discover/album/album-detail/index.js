@@ -1,6 +1,8 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, shallowEqual, useSelector } from 'react-redux'
 
+import { Skeleton } from 'antd'
+ 
 import { AlbumDetailWrapper } from './style'
 import { getAlbumDetailAction } from '../store/actionCreators'
 import LoadImage from '@/components/loading-image'
@@ -28,7 +30,7 @@ export default memo(function AlbumDetail(props) {
   return (
     <AlbumDetailWrapper isMore={isMore} className="wrap-v2">
       {
-        album ? (
+        albumDetail.hasOwnProperty('album') ? (
           <div className="d-left">
             <div className="d-top">
               <div className="image">
@@ -48,7 +50,8 @@ export default memo(function AlbumDetail(props) {
             <p onClick={e => setIsMore(!isMore)} className="more">{isMore ? '收起' : '展开'}</p>
             <SongTable tracks={songs} />
           </div>
-        ):''
+        ):
+        <Skeleton avatar active paragraph={{ rows: 6 }} />
       }
     </AlbumDetailWrapper>
   )
