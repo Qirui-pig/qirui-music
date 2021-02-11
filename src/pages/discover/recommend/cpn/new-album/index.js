@@ -35,7 +35,7 @@ export default memo(function NewAlbum() {
                     {
                       newAlbum.length>0 ? newAlbum.slice(item * 5, (item + 1) * 5).map(iten => {
                         return <AlbumCover key={iten.picUrl} info={iten} size={100} width={118} bgp="-570px" />
-                      }):<Skeleton active paragraph={{ rows: 4 }}/>
+                      }):<Skeleton active paragraph={{ rows: 3 }}/>
                     }
                   </div>
                 )
