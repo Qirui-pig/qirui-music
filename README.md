@@ -1,4 +1,4 @@
-# qirui-musichttps://github.com/Qirui-pig/qirui-music/blob/main/README.md
+
 ### 学习react 模仿网易云和qq音乐UI做的一个音乐网站
 
 >求求你STAR一下吧 救救孩子把
