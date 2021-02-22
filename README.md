@@ -1,11 +1,12 @@
-# qirui-music
+# qirui-musichttps://github.com/Qirui-pig/qirui-music/blob/main/README.md
 ### 学习react 模仿网易云和qq音乐UI做的一个音乐网站
 
 >求求你STAR一下吧 救救孩子把
 
 - [后台](https://github.com/Binaryify/NeteaseCloudMusicApi)(Binaryify大佬，膜拜大佬)
 - [源码地址](https://github.com/Qirui-pig/qirui-music)
-- [项目预览](http://1.15.105.80:3000)（服务器小拉,如果没有东西 多半是挂了）
+- [项目预览](http://8.129.45.99:3000)
+- [备用地址](http://1.15.105.80:3000)
 
 #### 技术栈
 - React：采用最新Hooks的语法
