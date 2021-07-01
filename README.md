@@ -1,7 +1,7 @@
 
 ### 学习react 模仿网易云和qq音乐UI做的一个音乐网站
 
->求求你STAR一下吧 救救孩子把
+
 
 - [后台](https://github.com/Binaryify/NeteaseCloudMusicApi)(Binaryify大佬，膜拜大佬)
 - [源码地址](https://github.com/Qirui-pig/qirui-music)
