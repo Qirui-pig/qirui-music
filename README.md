@@ -20,6 +20,7 @@
 - Aplayer：音频播放 部分引用
 - Dplayer：视频播放
 - Express：Express做静态资源服务器
+- Node-SSH：webpack配置自定义loader 打包自动上传服务器
 
 
 #### 功能介绍
@@ -47,6 +48,7 @@
 │   ├── pages          		   // 页面
 │   ├── router   		       // 路由配置器
 │   ├── store           	   // redux状态管理器
+│   ├── plugins           	   // 自定义插件
 │   ├── utils         	       // 工具函数
 │   ├── App.js         	       // 主页面
 │   └── index.js       	       // 入口
