@@ -4,7 +4,7 @@ import axios from 'axios'
 // import { message, Spin } from 'antd';
 
 const instance = axios.create({
-  baseURL:'http://1.15.105.80:8080/',
+  baseURL:'http://1.15.105.80:3001/',
   // baseURL:'http://localhost:8080/',
 
   timeout:50000

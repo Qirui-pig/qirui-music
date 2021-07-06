@@ -13,6 +13,7 @@
     "axios": "^0.21.0",
     "immutable": "^4.0.0-rc.12",
     "magic.css": "^1.4.6",
+    "node-ssh": "^11.1.1",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-aplayer": "^1.0.0",

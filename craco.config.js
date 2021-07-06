@@ -1,13 +1,23 @@
 const path = require("path");
+const AutoUploadPlugin = require('./src/plugins/AutoUploadPlugin')
 
 const resolve = dir => path.resolve(__dirname,dir);
 
 module.exports = {
+  
   webpack:{
     alias:{
       "@":resolve("src"),
       "components":resolve("src/components")
     },
+    plugins:[
+      new AutoUploadPlugin({
+        host: '1.15.105.80',
+        username: 'root',
+        password: '',
+        folder: '../myServe/qirui-music/public'
+      })
+    ],
     // configure: (webpackConfig, {
     //   env, paths
     // }) => {
