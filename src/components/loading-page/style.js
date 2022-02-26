@@ -6,7 +6,7 @@ export const LoadingPageWrapper = styled.div`
   height:500px;
   width:1040px;
   margin:0 auto;
-  background-image:url(${loadingBg});
+  // background-image:url(${loadingBg});
   background-position:center;
   opacity:.5;
   background-size:cover;

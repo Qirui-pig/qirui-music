@@ -11,6 +11,8 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.9.4",
     "axios": "^0.21.0",
+    "browserslist": "^4.19.3",
+    "caniuse-lite": "^1.0.30001312",
     "immutable": "^4.0.0-rc.12",
     "magic.css": "^1.4.6",
     "node-ssh": "^11.1.1",

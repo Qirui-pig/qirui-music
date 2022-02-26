@@ -11,12 +11,6 @@ module.exports = {
       "components":resolve("src/components")
     },
     plugins:[
-      new AutoUploadPlugin({
-        host: '1.15.105.80',
-        username: 'root',
-        password: '',
-        folder: '../myServe/qirui-music/public'
-      })
     ],
     // configure: (webpackConfig, {
     //   env, paths

@@ -1,36 +1,36 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-// const QRDiscover =  React.lazy(()=>import('../pages/discover')) 
-// const QRRecommend =  React.lazy(()=>import('../pages/discover/recommend')) 
-// const QRRanking =  React.lazy(()=>import('../pages/discover/ranking')) 
-// const QRSong =  React.lazy(()=>import('../pages/discover/song')) 
-// const QRDjRadio =  React.lazy(()=>import('../pages/discover/djradio')) 
-// const QRArtist =  React.lazy(()=>import('../pages/discover/artist')) 
-// const QRAlbum =  React.lazy(()=>import('../pages/discover/album')) 
-// const SongDetail =  React.lazy(()=>import('../pages/play')) 
-// const PlayGroup =  React.lazy(()=>import('../pages/discover/play-list')) 
-// const DjDetail =  React.lazy(()=>import('../pages/discover/djradio/dj-detail')) 
-// const AlbumDetail =  React.lazy(()=>import('../pages/discover/album/album-detail')) 
-// const QRFriend =  React.lazy(()=>import('../pages/friend')) 
-// const QRMine =  React.lazy(()=>import('../pages/mine')) 
-// const MvDetail =  React.lazy(()=>import('../pages/mine/mv-detail')) 
+const QRDiscover =  React.lazy(()=>import('../pages/discover')) 
+const QRRecommend =  React.lazy(()=>import('../pages/discover/recommend')) 
+const QRRanking =  React.lazy(()=>import('../pages/discover/ranking')) 
+const QRSong =  React.lazy(()=>import('../pages/discover/song')) 
+const QRDjRadio =  React.lazy(()=>import('../pages/discover/djradio')) 
+const QRArtist =  React.lazy(()=>import('../pages/discover/artist')) 
+const QRAlbum =  React.lazy(()=>import('../pages/discover/album')) 
+const SongDetail =  React.lazy(()=>import('../pages/play')) 
+const PlayGroup =  React.lazy(()=>import('../pages/discover/play-list')) 
+const DjDetail =  React.lazy(()=>import('../pages/discover/djradio/dj-detail')) 
+const AlbumDetail =  React.lazy(()=>import('../pages/discover/album/album-detail')) 
+const QRFriend =  React.lazy(()=>import('../pages/friend')) 
+const QRMine =  React.lazy(()=>import('../pages/mine')) 
+const MvDetail =  React.lazy(()=>import('../pages/mine/mv-detail')) 
 
-import QRDiscover from '@/pages/discover'
-import QRRecommend from '@/pages/discover/recommend'
-import QRRanking from '@/pages/discover/ranking'
-import QRSong from '@/pages/discover/song'
-import QRDjRadio from '@/pages/discover/djradio'
-import QRArtist from '@/pages/discover/artist'
-import QRAlbum from '@/pages/discover/album'
-import SongDetail from '@/pages/play'
-import PlayGroup from '@/pages/discover/play-list'
-import DjDetail from '@/pages/discover/djradio/dj-detail'
-import AlbumDetail from '@/pages/discover/album/album-detail'
+// import QRDiscover from '@/pages/discover'
+// import QRRecommend from '@/pages/discover/recommend'
+// import QRRanking from '@/pages/discover/ranking'
+// import QRSong from '@/pages/discover/song'
+// import QRDjRadio from '@/pages/discover/djradio'
+// import QRArtist from '@/pages/discover/artist'
+// import QRAlbum from '@/pages/discover/album'
+// import SongDetail from '@/pages/play'
+// import PlayGroup from '@/pages/discover/play-list'
+// import DjDetail from '@/pages/discover/djradio/dj-detail'
+// import AlbumDetail from '@/pages/discover/album/album-detail'
 
-import QRFriend from '@/pages/friend'
-import QRMine from '@/pages/mine'
-import MvDetail from '@/pages/mine/mv-detail'
+// import QRFriend from '@/pages/friend'
+// import QRMine from '@/pages/mine'
+// import MvDetail from '@/pages/mine/mv-detail'
 
 
 const routes = [
