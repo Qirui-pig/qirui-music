@@ -5,7 +5,7 @@
 
 - [后台](https://github.com/Binaryify/NeteaseCloudMusicApi)(NeteaseCloudMusicApi)
 - [源码地址](https://github.com/Qirui-pig/qirui-music)
-- [项目预览](http://1.15.105.80:3001)
+- [项目预览](qirui.fun)
 
 #### 技术栈
 - React：采用最新Hooks的语法
